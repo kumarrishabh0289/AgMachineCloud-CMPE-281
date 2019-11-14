@@ -1,5 +1,5 @@
 # AG MAchineCloud
-Airbnb Prototype for Group Project CMPE 275 (OpenHome)
+
 
 #Commit Rules
 1) All Members should commit on their local git repo and will push on seperate branch. No one will be able to push directly on the Master.
