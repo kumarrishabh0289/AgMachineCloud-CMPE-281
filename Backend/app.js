@@ -3,10 +3,11 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var cors = require('cors');
+const cors = require('cors');
 const productRoutes = require('./api/routes/products');
 const userRoutes = require('./api/routes/user');
 const profileRoutes = require('./api/routes/profile');
+const loginRoutes = require('./api/routes/login');
 const courseRoutes = require('./api/routes/course');
 const enrollRoutes = require('./api/routes/enroll');
 const assignmentRoutes = require('./api/routes/assignment');
@@ -16,8 +17,8 @@ const lectureRoutes = require('./api/routes/lecture');
 const submissionRoutes = require('./api/routes/submission');
 const permissionRoutes = require('./api/routes/permission');
 const mailRoutes = require('./api/routes/mail');
-var passport = require("passport");
-var passportJWT = require("passport-jwt");
+let passport = require("passport");
+const passportJWT = require("passport-jwt");
 
 
 require('./api/auth/auth');
@@ -29,6 +30,7 @@ mongoose.connect('mongodb+srv://openhome:' +
 		useNewUrlParser: true
 	}
 );
+
 mongoose.set('useCreateIndex', true)
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}))
@@ -40,7 +42,7 @@ app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 app.use(passport.initialize());
 
 
-var passport = require("passport");
+passport = require("passport");
 
 
 app.post("/secret", passport.authenticate('jwt', {session: false}), function (req, res) {
@@ -55,6 +57,7 @@ app.use('/user', userRoutes);
 
 app.use('/profile', profileRoutes);
 app.use('/course', courseRoutes);
+app.use('/login', loginRoutes);
 app.use('/enroll', enrollRoutes);
 app.use('/assignment', assignmentRoutes);
 app.use('/quiz', quizRoutes);
