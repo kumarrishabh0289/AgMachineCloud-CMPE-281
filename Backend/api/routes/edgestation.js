@@ -45,9 +45,10 @@ router.post('/', (req, res) => {
 		name: req.body.name,
 		latitude: req.body.latitude,
 		longitude: req.body.longitude,
+		address: req.body.address,
 		city: req.body.city,
 		country: req.body.country,
-		address: req.body.address,
+		state: req.body.state,
 		userEmail: req.body.userEmail
 	});
 	edgeStation

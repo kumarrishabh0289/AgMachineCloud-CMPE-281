@@ -6,9 +6,10 @@ const userSchema = mongoose.Schema({
 	name: String,
 	latitude: String,
 	longitude: String,
+	address: String,
 	city: String,
 	country: String,
-	address: String,
+	state: String,
 	userEmail: String
 });
 
