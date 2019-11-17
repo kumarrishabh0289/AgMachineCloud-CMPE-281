@@ -26,7 +26,7 @@ class FrontPage extends Component {
                         <div class="col-sm-5 col-md-5" style={{ backgroundColor: "white", opacity: .7, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
 
                             <h1>
-                                Automated Cloud Agriculture Solution.
+                                 Sign Up
                                 </h1>
 
                             <form>
@@ -35,8 +35,8 @@ class FrontPage extends Component {
                                     <div class="col-sm-12 col-md-12">
                                         <br />
                                         <div class="form-group">
-                                            <label for="where"><h5>WHERE</h5></label>
-                                            <input type="text" class="form-control" id="where" placeholder="Anywhere" />
+                                            <label for="where"><h5>Username</h5></label>
+                                            <input type="text" class="form-control" id="where" placeholder="Your username" />
 
                                         </div>
 
@@ -51,18 +51,23 @@ class FrontPage extends Component {
                                     <div class="col-sm-6 col-md-6">
 
                                         <div class="form-group">
-                                            <label for="where"><h5>CHECK-OUT</h5></label>
-                                            <input type="text" class="form-control" id="where" placeholder="Check-Out" />
-
+                                            <label for="where"><h5>Password</h5></label>
+                                            <input type="password" class="form-control" id="password" placeholder="password" />
                                         </div>
 
                                     </div>
                                     <div class="col-sm-6 col-md-6">
 
                                         <div class="form-group">
-                                            <label for="where"><h5>CHECK-IN</h5></label>
-                                            <input type="text" class="form-control" id="where" placeholder="Check-In" />
+                                            <label for="where"><h5>Role</h5></label>
+                                            <input type="text" class="form-control" id="role" placeholder="role" />
+                                        </div>
+                                    </div>
+                                      <div class="col-sm-6 col-md-6">
 
+                                        <div class="form-group">
+                                            <label for="where"><h5>Edge Station ID</h5></label>
+                                            <input type="text" class="form-control" id="role" placeholder="Choose an edge station ID" />
                                         </div>
                                     </div>
 
