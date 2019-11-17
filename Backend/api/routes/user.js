@@ -32,9 +32,14 @@ router.post('/register', (req, res, next) => {
 		_id: new mongoose.Types.ObjectId(),
 		email: req.body.email,
 		name: req.body.name,
+<<<<<<< HEAD
 		password: req.body.password,
 		role: req.body.role,
 		edgeStationId: req.body.edgeStationId
+=======
+		password: mystr,
+		role: req.body.role
+>>>>>>> 515efd6f5ee093952637dc677e0fcc978e7caa86
 	});
 	user
 		.save()
