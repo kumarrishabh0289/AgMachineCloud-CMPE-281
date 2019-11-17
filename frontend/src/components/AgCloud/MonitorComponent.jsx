@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 
 
-class SensorUpdateComponent extends Component {
+class MonitorComponent extends Component {
 
 
     constructor(props) {
@@ -20,9 +20,9 @@ class SensorUpdateComponent extends Component {
     render() {
         return (
                   <div className="container">
-                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
+                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)"}}>
 
-                <h3>Sensor update!</h3>
+                <h3>Monitor Component!</h3>
                 <div className="container">
               
                 </div>
@@ -32,4 +32,4 @@ class SensorUpdateComponent extends Component {
 
 }
 
-export default SensorUpdateComponent
+export default MonitorComponent

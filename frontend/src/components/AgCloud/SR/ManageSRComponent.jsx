@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 
 
-class SensorUpdateComponent extends Component {
+class ManageSRComponent extends Component {
 
 
     constructor(props) {
@@ -22,7 +22,7 @@ class SensorUpdateComponent extends Component {
                   <div className="container">
                         <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
 
-                <h3>Sensor update!</h3>
+                <h1>Manage  sr !</h1>
                 <div className="container">
               
                 </div>
@@ -32,4 +32,4 @@ class SensorUpdateComponent extends Component {
 
 }
 
-export default SensorUpdateComponent
+export default ManageSRComponent
