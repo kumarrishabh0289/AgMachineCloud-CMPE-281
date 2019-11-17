@@ -91,7 +91,11 @@ class LoginComponent extends Component {
 
                                         <div class="form-group">
                                             <label for="where"><h5>Role</h5></label>
-                                            <input type="text" class="form-control" id="role" placeholder="role" />
+                                            <select id = "myList">
+                                            <option value = "1">Farmer</option>
+                                            <option value = "2">Machine Controller</option>
+                                            <option value = "3">Service Carrier Staff</option>
+                                            </select>
                                         </div>
                                     </div>
                                       <div class="col-sm-6 col-md-6">
@@ -104,7 +108,7 @@ class LoginComponent extends Component {
 
                                 </div>
 
-               <div class="row" >
+                <div class="row" >
 
                                     <div class="col-sm-12 col-md-12">
                                         <div class="form-group">

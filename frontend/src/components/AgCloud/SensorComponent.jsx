@@ -13,7 +13,6 @@ class SensorComponent extends Component {
             welcomeMessage: 'Hey You Are Authorized'
         }
         
-        
     }
 
     render() {
