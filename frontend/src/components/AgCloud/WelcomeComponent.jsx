@@ -1,37 +1,123 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-
-
+import { API_URL } from '../../Constants'
+import axios from 'axios';
+import Draggable from 'react-draggable';
 class WelcomeComponent extends Component {
 
     constructor(props) {
         super(props)
-        
+
         this.state = {
-            welcomeMessage: 'Hey You Are Authorized'
+            welcomeMessage: 'Hey You Are Authorized',
+            edgestation: [],
         }
-        
-        
+
+
+    }
+
+    componentDidMount() {
+        let email = sessionStorage.authenticatedUser;
+        axios.get(API_URL + '/edgestation/email', { params: { email } })
+            .then((response) => {
+                console.log(response.data);
+                this.setState({
+                    edgestation: this.state.edgestation.concat(response.data)
+                });
+            });
+    }
+    ProgressButton = (edgestation) => {
+        sessionStorage.setItem('edgeStation', edgestation.edgeStationId);
+        this.props.history.push(`/edgestation`)
     }
 
     render() {
-        return (
-            <>
-                <h1>Welcome!</h1>
-                <div className="container">
-                    Welcome {this.props.match.params.name}.
-                   
-                </div>
-                <div className="container">
+       
+      
+        if (sessionStorage.role === 'Farmer') {
+            return (
+                <div class="container">
                     
-                       
-                </div>
-                <div className="container">
-                    {this.state.welcomeMessage}
-                </div>
 
-            </>
-        )
+                    <div class="body-div">
+                        <br />
+                        <h2>Farmer Dashboard</h2><br />
+                        <h4>Welcome, {sessionStorage.name}</h4>
+                        <div class="card-columns">
+                            {
+                                this.state.edgestation.map(edgestation => {
+
+                                    return (
+
+                                        <Draggable>
+                                            <div>
+
+                                                <div class="card bg-info text-white">
+                                                    <div class="card-header">
+                                                        {edgestation.name}
+                                                    </div>
+                                                    <div class="card-body ">
+                                                        <p class="card-text">
+                                                            <table>
+                                                                <tr>
+                                                                    <th>EdgeStation ID</th><td>{edgestation.edgeStationId}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Latitude</th>
+                                                                    <td>{edgestation.latitude}</td>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <th>Longitude</th><td>{edgestation.longitude}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Address</th> <td>{edgestation.address}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>City</th><td>{edgestation.city}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Country</th><td>{edgestation.country}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>State</th><td>{edgestation.state}</td>
+                                                                </tr>
+                                                               
+
+                                                            </table>
+
+                                                        </p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                    <button onClick={() => this.ProgressButton(edgestation)} class="btn btn-primary">Goto EdgeStation</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </Draggable>
+
+                                    )
+                                })
+                            }
+
+
+                        </div>
+                    </div>
+
+                    <Link to="/edgestationcreate"><button class="btn btn-success">Create new Edge Station</button></Link>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div class="container">
+                    <div class="body-div">
+                        <h3>You are not authorized to view this page.</h3>
+                    </div>
+                </div>
+            )
+        }
     }
 
 
