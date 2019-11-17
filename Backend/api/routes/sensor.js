@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
    
 });
 
-Sensor.get('/edgeStation', (req, res, next)=>{
+router.get('/edgeStation', (req, res, next)=>{
     const edgeStationId = req.query.edgeStationId;
     const machineId = req.query.machineId
     Sensor.find({ edgeStationId: edgeStationId, machineId: machineId  })
