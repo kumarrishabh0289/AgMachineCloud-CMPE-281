@@ -12,7 +12,10 @@ class FrontPage extends Component {
             password:"",
             role:"",
             email:"",
-            signup_status:""
+            signup_status:"",
+            hasFailed: false,
+            showSuccessMessage: false
+
 
         }
         this.submitSignUp = this.submitSignUp.bind(this);
@@ -41,6 +44,7 @@ class FrontPage extends Component {
             name: this.state.name,
             role: this.state.role
 
+
         }
         console.log("data",data)
         //set the with credentials to true
@@ -55,11 +59,13 @@ class FrontPage extends Component {
                     this.setState({
 
                         signup_status: response.data.message,
+                        showSuccessMessage: true
                     })
                 } else {
                     this.setState({
 
-                        signup_status: "error"
+                        signup_status: "User Creation Error",
+                        hasFailed: true
                     })
                 }
             });
@@ -154,6 +160,11 @@ class FrontPage extends Component {
                                             <br/>
                                         </div>
                                     </div>
+
+                                    <br />
+                                    {this.state.hasFailed && <div className="alert alert-warning">User Creation Failed</div>}
+                                    {this.state.showSuccessMessage && <div className="alert alert-warning">User Created Successfully</div>}
+                                    <br />
                                     
                                 </div>
                             </form>
