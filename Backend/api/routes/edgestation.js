@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const EdgeStation = require('../models/edgestation');
+const Machine = require('../models/machine');
 
 router.get('/', (req, res) => {
 	EdgeStation.find()
@@ -60,6 +61,50 @@ router.post('/', (req, res) => {
 	res.status(201).json({
 		message: "New Edge Station Created",
 	});
+});
+
+router.patch("/addMachine", (req, res) => {
+	const machineId = req.body.machineId;
+	Machine.update({machineId: machineId}, {
+			$set: {
+				machineStatus: 1,
+			}
+		})
+		.exec()
+		.then(result => {
+			console.log(result);
+			res.status(200).json({
+				message: "Machine was added Successfully"
+			});
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({
+				error: err
+			});
+		});
+});
+
+router.patch("/deleteMachine", (req, res) => {
+	const machineId = req.body.machineId;
+	Machine.update({machineId: machineId}, {
+			$set: {
+				machineStatus: 0,
+			}
+		})
+		.exec()
+		.then(result => {
+			console.log(result);
+			res.status(200).json({
+				message: "Machine was deleted Successfully"
+			});
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({
+				error: err
+			});
+		});
 });
 
 module.exports = router;

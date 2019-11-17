@@ -3,9 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const Profile = require('../models/profile');
-var jwt = require('jsonwebtoken');
-
-
+const jwt = require('jsonwebtoken');
 
 router.get('/', (req, res, next) => {
 	User.find()
@@ -22,9 +20,8 @@ router.get('/', (req, res, next) => {
 		})
 });
 
-
 router.post('/register', (req, res, next) => {
-	console.log("request", req.body)
+	console.log("request", req.body);
 	
 	const user = new User({
 		_id: new mongoose.Types.ObjectId(),
@@ -32,7 +29,6 @@ router.post('/register', (req, res, next) => {
 		name: req.body.name,
 		password: req.body.password,
 		role: req.body.role,
-		
 	});
 	user
 		.save()
@@ -43,7 +39,6 @@ router.post('/register', (req, res, next) => {
 	
 	res.status(200).json({message: "User Created"});
 });
-
 
 router.get('/:userId', (req, res, next) => {
 	const email = req.params.userId;
