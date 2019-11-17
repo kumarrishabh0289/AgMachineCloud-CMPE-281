@@ -1,5 +1,5 @@
 {
-    "env":{
-        "MONGO_PASSWORD": "openhome123."
-    }
+  "env": {
+    "MONGO_PASSWORD": "openhome123."
+  }
 }
