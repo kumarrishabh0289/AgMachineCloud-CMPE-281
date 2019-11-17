@@ -3,18 +3,17 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const user = require('../models/user');
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
+
 
 router.post("/", (req, res) => {
-	const cipher = crypto.createCipher('aes-256-ecb', 'password');
-	const mystr = cipher.update(req.body.password, 'utf8', 'hex') + cipher.final('hex');
+	console.log("data", req.body);
 	
-	user.findOne({email: req.body.username})
+	user.findOne({email: req.body.email})
 		.exec()
 		.then(doc => {
 			console.log("From database", doc);
 			
-			if (doc.password === mystr && doc.role === req.body.role) {
+			if (doc.password === req.body.password && doc.role === req.body.role) {
 				res.cookie('cookie', 'cookie', {maxAge: 900000, httpOnly: false, path: '/'});
 				
 				const body = {user: doc.name};

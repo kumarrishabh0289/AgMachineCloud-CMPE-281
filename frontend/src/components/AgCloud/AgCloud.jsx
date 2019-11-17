@@ -4,12 +4,12 @@ import AuthenticatedRoute from './AuthenticatedRoute.jsx'
 import LoginComponent from './LoginComponent.jsx'
 import ErrorComponent from './ErrorComponent.jsx'
 import HeaderComponent from './HeaderComponent.jsx'
-import FooterComponent from './FooterComponent.jsx'
+import FooterComponent from './FooterComponent'
 import LogoutComponent from './LogoutComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
 import FrontPage from './FrontPage.jsx'
 import SensorComponent from './SensorComponent.jsx'
-
+import SRDashboardComponent from './SRDashboardComponent.jsx'
 
 class AgCloud extends Component {
     render() {
@@ -23,10 +23,12 @@ class AgCloud extends Component {
                             <Route path="/login" component={LoginComponent}/>
                             <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
                             <Route path="/sensor" component={SensorComponent}/>
+                            <Route path="/srdashboard" component={SRDashboardComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                             
                             <Route component={ErrorComponent}/>
                         </Switch>
+                        <FooterComponent/>
                     </>
                 </Router>
                

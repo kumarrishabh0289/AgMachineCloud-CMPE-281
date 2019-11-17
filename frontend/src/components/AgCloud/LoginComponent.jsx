@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AuthenticationForApiService from './AuthenticationForApiService.js'
 import GoogleLogin from 'react-google-login';
+import { API_URL } from '../../Constants'
 
 class LoginComponent extends Component {
 
@@ -8,8 +9,9 @@ class LoginComponent extends Component {
         super(props)
 
         this.state = {
-            username: 'Rishabh',
+            email: '',
             password: '',
+            role: '',
             hasLoginFailed: false,
             showSuccessMessage: false
         }
@@ -34,10 +36,11 @@ class LoginComponent extends Component {
     loginClicked() {
 
         AuthenticationForApiService
-            .authenticate(this.state.username, this.state.password)
+            .authenticate(this.state.email, this.state.password, this.state.role)
             .then((response) => {
-                AuthenticationForApiService.registerSuccessfulLogin(this.state.username, response.data.token)
-                this.props.history.push(`/welcome/${this.state.username}`)
+                console.log("response",response)
+                AuthenticationForApiService.registerSuccessfulLogin(this.state.email, response.data.jwt)
+                this.props.history.push(`/welcome/${this.state.email}`)
             }).catch(() => {
                 this.setState({ showSuccessMessage: false })
                 this.setState({ hasLoginFailed: true })
@@ -52,72 +55,76 @@ class LoginComponent extends Component {
     render() {
         return (
             <div>
-                
+                <br />
                 <div class="container-fluid">
-                <div class="col-sm-5 col-md-5 container" style={{ backgroundColor: "white", opacity: .7, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
+                    <div class="col-sm-5 col-md-5 container" style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=90)", borderRadius: '10px' }}>
+                        <br />
+                        <h1>Login</h1>
 
-                <h1>Login</h1>
-                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMessage && <div>Login Successful</div>}
-                    
-                     <div class="row" >
+                        <form onSubmit={this.loginClicked}>
+                            <div class="row" >
 
-                                    <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-12 col-md-12">
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="where"><h5>Email</h5></label>
+                                        <input type="text" class="form-control" id="where" placeholder="Your Email" name="email" value={this.state.email} onChange={this.handleChange} />
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-1 col-md-1">
+
+                                </div>
+
+                            </div>
+
+                            <div class="row" >
+
+                                <div class="col-sm-6 col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="password"><h5>Password</h5></label>
+                                        <input type="password" class="form-control" id="password" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+
+                                    <div class="form-group" >
+                                        <label for="where"><h5>Role</h5></label>
+                                        <select id="role" className="form-control" name="role" value={this.state.role} onChange={this.handleChange}>
+                                            <option value="">Select Role</option>
+                                            <option value="Farmer">Farmer</option>
+                                            <option value="MachineController">Machine Controller</option>
+                                            <option value="ServiceCarrierStaff">Service Carrier Staff</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row" >
+
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group">
+
                                         <br />
-                                        <div class="form-group">
-                                            <label for="where"><h5>Username</h5></label>
-                                            <input type="text" class="form-control" id="where" placeholder="Your username" />
-
-                                        </div>
-
+                                        <input type="submit" class="form-control btn btn-danger" />
+                                        <br />
+                                        <br />
                                     </div>
-                                    <div class="col-sm-1 col-md-1">
-
-                                    </div>
-
                                 </div>
+                                <br />
+                                {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                                {this.state.showSuccessMessage && <div className="alert alert-warning">Login Successful</div>}
+                                <br />
+                            </div>
+                        </form>
+                    </div>
 
-                    <div class="row" >
 
-                                    <div class="col-sm-6 col-md-6">
-
-                                        <div class="form-group">
-                                            <label for="where"><h5>Password</h5></label>
-                                            <input type="password" class="form-control" id="password" placeholder="password" />
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-6 col-md-6">
-
-                                        <div class="form-group">
-                                            <label for="where"><h5>Role</h5></label>
-                                            <select id = "myList">
-                                            <option value = "Farmer">Farmer</option>
-                                            <option value = "MachineController">Machine Controller</option>
-                                            <option value = "ServiceCarrierStaff">Service Carrier Staff</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                      
-
-                                </div>
-
-                <div class="row" >
-
-                                    <div class="col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                        
-                                            <br/>
-                                            <input type="submit" class="form-control btn btn-danger" />
-                                            <br/>
-                                            <br/>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-               
-                </div>
-              
                 </div>
             </div>
         )
