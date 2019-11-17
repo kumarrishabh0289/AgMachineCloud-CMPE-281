@@ -8,11 +8,11 @@ class FrontPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name:"",
-            password:"",
-            role:"",
-            email:"",
-            signup_status:"",
+            name: "",
+            password: "",
+            role: "",
+            email: "",
+            signup_status: "",
             hasFailed: false,
             showSuccessMessage: false
 
@@ -28,7 +28,7 @@ class FrontPage extends Component {
 
     handleChange = (event) => {
         this.setState({
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         })
     }
 
@@ -46,11 +46,11 @@ class FrontPage extends Component {
 
 
         }
-        console.log("data",data)
+        console.log("data", data)
         //set the with credentials to true
         axios.defaults.withCredentials = true;
         //make a post request with the user data
-        axios.post(API_URL+'/user/register', data)
+        axios.post(API_URL + '/user/register', data)
             .then((response) => {
                 console.log("Status Code : ", response.status);
                 if (response.status === 200) {
@@ -62,9 +62,11 @@ class FrontPage extends Component {
                         showSuccessMessage: true
                     })
                 } else {
+                    console.log(response.data.error);
                     this.setState({
 
-                        signup_status: "User Creation Error",
+                        
+                        signup_status: response.data.error,
                         hasFailed: true
                     })
                 }
@@ -86,7 +88,7 @@ class FrontPage extends Component {
                         <div className="col-sm-5 col-md-5" style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=90)", borderRadius: '10px' }}>
 
                             <h1>
-                                 Sign Up
+                                Sign Up
                                 </h1>
 
                             <form onSubmit={this.submitSignUp}>
@@ -96,7 +98,7 @@ class FrontPage extends Component {
                                         <br />
                                         <div className="form-group">
                                             <label htmlFor="where"><h5>Email ID</h5></label>
-                                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" value={this.state.email} onChange={this.handleChange}/>
+                                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" value={this.state.email} onChange={this.handleChange} />
 
                                         </div>
 
@@ -109,10 +111,10 @@ class FrontPage extends Component {
                                 <div className="row" >
 
                                     <div className="col-sm-12 col-md-12">
-                                       
+
                                         <div className="form-group">
                                             <label htmlFor="where"><h5>Name</h5></label>
-                                            <input type="text" className="form-control" name="name" id="name" placeholder="Your Name" value={this.state.name} onChange={this.handleChange}/>
+                                            <input type="text" className="form-control" name="name" id="name" placeholder="Your Name" value={this.state.name} onChange={this.handleChange} />
 
                                         </div>
 
@@ -128,7 +130,7 @@ class FrontPage extends Component {
 
                                         <div className="form-group">
                                             <label htmlFor="where"><h5>Password</h5></label>
-                                            <input type="password" className="form-control" name="password" id="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/>
+                                            <input type="password" className="form-control" name="password" id="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
                                         </div>
 
                                     </div>
@@ -136,47 +138,47 @@ class FrontPage extends Component {
 
                                         <div className="form-group">
                                             <label htmlFor="where"><h5>Role</h5></label>
-                                             <select id = "role" className="form-control" name="role" value={this.state.role} onChange={this.handleChange}>
-                                             <option value = "">Select Role</option>
-                                            <option value = "Farmer">Farmer</option>
-                                            <option value = "MachineController">Machine Controller</option>
-                                            <option value = "ServiceCarrierStaff">Service Carrier Staff</option>
+                                            <select id="role" className="form-control" name="role" value={this.state.role} onChange={this.handleChange}>
+                                                <option value="">Select Role</option>
+                                                <option value="Farmer">Farmer</option>
+                                                <option value="MachineController">Machine Controller</option>
+                                                <option value="ServiceCarrierStaff">Service Carrier Staff</option>
                                             </select>
                                         </div>
                                     </div>
-                                     
+
 
                                 </div>
 
-                               
+
                                 <div className="row" >
 
                                     <div className="col-sm-12 col-md-12">
                                         <div className="form-group">
-                                        
-                                            <br/>
+
+                                            <br />
                                             <input type="submit" className="form-control btn btn-danger" />
-                                            <br/>
-                                            <br/>
+                                            <br />
+                                            <br />
                                         </div>
                                     </div>
 
                                     <br />
-                                    {this.state.hasFailed && <div className="alert alert-warning">User Creation Failed</div>}
+                                    {this.state.hasFailed && <div className="alert alert-warning">User Creation Failed Check console for More Info.</div>}
                                     {this.state.showSuccessMessage && <div className="alert alert-warning">User Created Successfully</div>}
                                     <br />
-                                    
+
                                 </div>
                             </form>
                         </div>
 
-                        </div>
-
-
                     </div>
+
+
                 </div>
-                )
-            }
-        }
-        
+            </div>
+        )
+    }
+}
+
 export default FrontPage

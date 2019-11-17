@@ -15,14 +15,19 @@ class AuthenticationForApiService {
         })
     }
 
-    registerSuccessfulLogin(username, token) {
-        sessionStorage.setItem(AUTHENTICATED_USER_SESSION, username)
+    registerSuccessfulLogin(email, jwt,role,name) {
+        sessionStorage.setItem(AUTHENTICATED_USER_SESSION, email)
+        sessionStorage.setItem("jwt", jwt)
+        sessionStorage.setItem("role", role)
+        sessionStorage.setItem("name", name)
+        
         
     }
 
     
     logout() {
         sessionStorage.removeItem(AUTHENTICATED_USER_SESSION);
+        sessionStorage.removeItem("jwt");
     }
 
     isUserLoggedIn() {

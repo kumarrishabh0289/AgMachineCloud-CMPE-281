@@ -38,10 +38,15 @@ router.post('/register', (req, res, next) => {
 		.save()
 		.then(result => {
 			console.log(result);
+			res.status(200).json({message: "User Created"});
 		})
-		.catch(err => console.log(err));
+		.catch(err => {
+			console.log(err.errmsg)
+			res.status(202).json({error: err});
+			
+		});
 	
-	res.status(200).json({message: "User Created"});
+	
 });
 
 

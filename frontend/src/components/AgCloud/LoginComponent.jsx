@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AuthenticationForApiService from './AuthenticationForApiService.js'
 import GoogleLogin from 'react-google-login';
 import { API_URL } from '../../Constants'
+import axios from 'axios';
 
 class LoginComponent extends Component {
 
@@ -18,7 +19,7 @@ class LoginComponent extends Component {
 
         this.handleChange = this.handleChange.bind(this)
         this.loginClicked = this.loginClicked.bind(this)
-        this.responseGoogle = this.responseGoogle.bind(this)
+
     }
 
     handleChange(event) {
@@ -33,14 +34,29 @@ class LoginComponent extends Component {
 
 
 
-    loginClicked() {
+    loginClicked = (e) => {
 
-        AuthenticationForApiService
-            .authenticate(this.state.email, this.state.password, this.state.role)
+        console.log("submit login called")
+        var headers = new Headers();
+        //prevent page from refresh
+        e.preventDefault();
+        const data = {
+            email: this.state.email,
+            password: this.state.password,
+            role: this.state.role
+
+        }
+        console.log("data", data)
+        //set the with credentials to true
+        axios.defaults.withCredentials = true;
+        //make a post request with the user data
+        axios.post(API_URL + '/login', data)
             .then((response) => {
-                console.log("response",response)
-                AuthenticationForApiService.registerSuccessfulLogin(this.state.email, response.data.jwt)
-                this.props.history.push(`/welcome/${this.state.email}`)
+
+                console.log("response", response)
+                this.setState({ showSuccessMessage: true })
+                AuthenticationForApiService.registerSuccessfulLogin(this.state.email, response.data.jwt,response.data.role,response.data.name)
+                this.props.history.push(`/sensor`)
             }).catch(() => {
                 this.setState({ showSuccessMessage: false })
                 this.setState({ hasLoginFailed: true })
@@ -48,9 +64,7 @@ class LoginComponent extends Component {
 
     }
 
-    responseGoogle = (response) => {
-        console.log(response);
-    }
+
 
     render() {
         return (

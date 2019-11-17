@@ -22,7 +22,7 @@ class AgCloud extends Component {
                             <Route path="/" exact component={FrontPage}/>
                             <Route path="/login" component={LoginComponent}/>
                             <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
-                            <Route path="/sensor" component={SensorComponent}/>
+                            <AuthenticatedRoute path="/sensor" component={SensorComponent}/>
                             <Route path="/srdashboard" component={SRDashboardComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                             
