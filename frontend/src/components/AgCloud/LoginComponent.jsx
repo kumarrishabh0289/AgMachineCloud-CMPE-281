@@ -92,19 +92,13 @@ class LoginComponent extends Component {
                                         <div class="form-group">
                                             <label for="where"><h5>Role</h5></label>
                                             <select id = "myList">
-                                            <option value = "1">Farmer</option>
-                                            <option value = "2">Machine Controller</option>
-                                            <option value = "3">Service Carrier Staff</option>
+                                            <option value = "Farmer">Farmer</option>
+                                            <option value = "MachineController">Machine Controller</option>
+                                            <option value = "ServiceCarrierStaff">Service Carrier Staff</option>
                                             </select>
                                         </div>
                                     </div>
-                                      <div class="col-sm-6 col-md-6">
-
-                                        <div class="form-group">
-                                            <label for="where"><h5>Edge Station ID</h5></label>
-                                            <input type="text" class="form-control" id="role" placeholder="Type station ID" />
-                                        </div>
-                                    </div>
+                                      
 
                                 </div>
 

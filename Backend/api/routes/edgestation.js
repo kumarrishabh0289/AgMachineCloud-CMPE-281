@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Course = require('../models/course');
+const EdgeStation = require('../models/edgestation');
 
-
-router.get('/', (req, res, next) => {
-	Course.find()
+router.get('/', (req, res) => {
+	EdgeStation.find()
 		.exec()
 		.then(docs => {
 			console.log(docs);
@@ -20,9 +19,9 @@ router.get('/', (req, res, next) => {
 	
 });
 
-router.get('/email', (req, res, next) => {
+router.get('/email', (req, res) => {
 	const email = req.query.email;
-	Course.find({faculty_email: email})
+	EdgeStation.find({userEmail: email})
 		.exec()
 		.then(doc => {
 			console.log("From database", doc);
@@ -37,34 +36,29 @@ router.get('/email', (req, res, next) => {
 			console.log(err);
 			res.status(500).json({error: err});
 		})
-	
 });
 
-
-router.post('/', (req, res, next) => {
-	const course = new Course({
+router.post('/', (req, res) => {
+	const edgeStation = new EdgeStation({
 		_id: new mongoose.Types.ObjectId(),
-		course_id: req.body.id,
+		edgeStationId: req.body.edgeStationId,
 		name: req.body.name,
-		faculty_email: req.body.faculty,
-		ta_email: req.body.ta,
-		department: req.body.department,
-		room: req.body.room,
-		capacity: req.body.capacity,
-		waiting: req.body.waiting,
-		term: req.body.term,
-		current_wait: 0,
-		total_enroll: 0,
+		latitude: req.body.latitude,
+		longitude: req.body.longitude,
+		address: req.body.address,
+		city: req.body.city,
+		country: req.body.country,
+		state: req.body.state,
+		userEmail: req.body.userEmail
 	});
-	course
+	edgeStation
 		.save()
 		.then(result => {
 			console.log(result);
 		})
 		.catch(err => console.log(err));
 	res.status(201).json({
-		message: "New Course Created",
-		
+		message: "New Edge Station Created",
 	});
 });
 
