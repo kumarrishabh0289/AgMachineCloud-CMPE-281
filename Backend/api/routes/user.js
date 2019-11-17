@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const Profile = require('../models/profile');
 var jwt = require('jsonwebtoken');
-var crypto = require('crypto');
+//var crypto = require('crypto');
 
 
 router.get('/', (req, res, next) => {
@@ -24,14 +24,15 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/register', (req, res, next) => {
-	const cipher = crypto.createCipher('aes-256-ecb', 'password');
-	const mystr = cipher.update(req.body.password, 'utf8', 'hex') + cipher.final('hex');
+	console.log("request", req.body)
+	// const cipher = crypto.createCipher('aes-256-ecb', 'password');
+	// const mystr = cipher.update(req.body.password, 'utf8', 'hex') + cipher.final('hex');
 	
 	const user = new User({
 		_id: new mongoose.Types.ObjectId(),
 		email: req.body.email,
 		name: req.body.name,
-		password: mystr,
+		password: req.body.password,
 		role: req.body.role,
 		edgeStationId: req.body.edgeStationId
 	});
@@ -41,10 +42,8 @@ router.post('/register', (req, res, next) => {
 			console.log(result);
 		})
 		.catch(err => console.log(err));
-	res.writeHead(200, {
-		'Content-Type': 'text/plain'
-	});
-	res.end("User Created");
+	
+	res.status(200).json({message: "User Created"});
 });
 
 
