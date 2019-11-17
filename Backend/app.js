@@ -23,11 +23,9 @@ var passportJWT = require("passport-jwt");
 
 require('./api/auth/auth');
 
-
-
-mongoose.connect('mongodb+srv://rishabh53:' +
+mongoose.connect('mongodb+srv://openhome:' +
 process.env.MONGO_PASSWORD+ 
-'@cluster0-dvu2r.mongodb.net/canvas?retryWrites=true',
+'@cluster0-uqjyp.mongodb.net/test?retryWrites=true&w=majority',
 {
     useNewUrlParser: true
 }
