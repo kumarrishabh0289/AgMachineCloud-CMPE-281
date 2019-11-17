@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const Profile = require('../models/profile');
 var jwt = require('jsonwebtoken');
-//var crypto = require('crypto');
+
 
 
 router.get('/', (req, res, next) => {
@@ -25,21 +25,14 @@ router.get('/', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
 	console.log("request", req.body)
-	// const cipher = crypto.createCipher('aes-256-ecb', 'password');
-	// const mystr = cipher.update(req.body.password, 'utf8', 'hex') + cipher.final('hex');
 	
 	const user = new User({
 		_id: new mongoose.Types.ObjectId(),
 		email: req.body.email,
 		name: req.body.name,
-<<<<<<< HEAD
 		password: req.body.password,
 		role: req.body.role,
-		edgeStationId: req.body.edgeStationId
-=======
-		password: mystr,
-		role: req.body.role
->>>>>>> 515efd6f5ee093952637dc677e0fcc978e7caa86
+		
 	});
 	user
 		.save()
