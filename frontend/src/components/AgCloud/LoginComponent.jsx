@@ -11,7 +11,7 @@ class LoginComponent extends Component {
         this.state = {
             email: '',
             password: '',
-            role:'',
+            role: '',
             hasLoginFailed: false,
             showSuccessMessage: false
         }
@@ -36,10 +36,11 @@ class LoginComponent extends Component {
     loginClicked() {
 
         AuthenticationForApiService
-            .authenticate(this.state.username, this.state.password, this.state.role)
+            .authenticate(this.state.email, this.state.password, this.state.role)
             .then((response) => {
-                AuthenticationForApiService.registerSuccessfulLogin(this.state.username, response.data.token)
-                this.props.history.push(`/welcome/${this.state.username}`)
+                console.log("response",response)
+                AuthenticationForApiService.registerSuccessfulLogin(this.state.email, response.data.jwt)
+                this.props.history.push(`/welcome/${this.state.email}`)
             }).catch(() => {
                 this.setState({ showSuccessMessage: false })
                 this.setState({ hasLoginFailed: true })
@@ -59,8 +60,7 @@ class LoginComponent extends Component {
                     <div class="col-sm-5 col-md-5 container" style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=90)", borderRadius: '10px' }}>
                         <br />
                         <h1>Login</h1>
-                        {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                        {this.state.showSuccessMessage && <div className="alert alert-warning">Login Successful</div>}
+
                         <form onSubmit={this.loginClicked}>
                             <div class="row" >
 
@@ -68,7 +68,7 @@ class LoginComponent extends Component {
                                     <br />
                                     <div class="form-group">
                                         <label for="where"><h5>Email</h5></label>
-                                        <input type="text" class="form-control" id="where" placeholder="Your Email" name="email" />
+                                        <input type="text" class="form-control" id="where" placeholder="Your Email" name="email" value={this.state.email} onChange={this.handleChange} />
 
                                     </div>
 
@@ -84,8 +84,8 @@ class LoginComponent extends Component {
                                 <div class="col-sm-6 col-md-6">
 
                                     <div class="form-group">
-                                        <label for="where"><h5>Password</h5></label>
-                                        <input type="password" class="form-control" id="password" placeholder="password" name="email" />
+                                        <label for="password"><h5>Password</h5></label>
+                                        <input type="password" class="form-control" id="password" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
                                     </div>
 
                                 </div>
@@ -93,8 +93,8 @@ class LoginComponent extends Component {
 
                                     <div class="form-group" >
                                         <label for="where"><h5>Role</h5></label>
-                                        <select id="role" className="form-control" name="role">
-                                        <option value="">Select Role</option>
+                                        <select id="role" className="form-control" name="role" value={this.state.role} onChange={this.handleChange}>
+                                            <option value="">Select Role</option>
                                             <option value="Farmer">Farmer</option>
                                             <option value="MachineController">Machine Controller</option>
                                             <option value="ServiceCarrierStaff">Service Carrier Staff</option>
@@ -116,7 +116,10 @@ class LoginComponent extends Component {
                                         <br />
                                     </div>
                                 </div>
-
+                                <br />
+                                {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                                {this.state.showSuccessMessage && <div className="alert alert-warning">Login Successful</div>}
+                                <br />
                             </div>
                         </form>
                     </div>

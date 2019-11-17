@@ -44,9 +44,10 @@ class SensorComponent extends Component {
           };
         return (
                   <div className="container">
-                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)" }}>
-
-                <h3>Sensor Dashboard</h3>
+                      <br/>
+                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)" , borderRadius: '10px' }}>
+                
+                <h3 style={divStyle}>Sensor Dashboard</h3>
                 <div className="container">
                 <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClick} >Add Sensor</button> 
                 <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > Update Sensor  </button> 
