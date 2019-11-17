@@ -8,6 +8,7 @@ const productRoutes = require('./api/routes/products');
 const userRoutes = require('./api/routes/user');
 const profileRoutes = require('./api/routes/profile');
 const loginRoutes = require('./api/routes/login');
+const edgeStationRoutes = require('./api/routes/edgestation');
 const courseRoutes = require('./api/routes/course');
 const enrollRoutes = require('./api/routes/enroll');
 const assignmentRoutes = require('./api/routes/assignment');
@@ -45,7 +46,7 @@ app.use(passport.initialize());
 passport = require("passport");
 
 
-app.post("/secret", passport.authenticate('jwt', {session: false}), function (req, res) {
+app.post("/secret", passport.authenticate('jwt', {session: false}, null), function (req, res) {
 	
 	console.log("success", req.body.data);
 	
@@ -58,6 +59,7 @@ app.use('/user', userRoutes);
 app.use('/profile', profileRoutes);
 app.use('/course', courseRoutes);
 app.use('/login', loginRoutes);
+app.use('/edgestation', edgeStationRoutes);
 app.use('/enroll', enrollRoutes);
 app.use('/assignment', assignmentRoutes);
 app.use('/quiz', quizRoutes);
