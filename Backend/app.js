@@ -17,6 +17,7 @@ const lectureRoutes = require('./api/routes/lecture');
 const submissionRoutes = require('./api/routes/submission');
 const permissionRoutes = require('./api/routes/permission');
 const mailRoutes = require('./api/routes/mail');
+const sensorRoutes = require('./api/routes/sensor');
 let passport = require("passport");
 const passportJWT = require("passport-jwt");
 
@@ -66,6 +67,7 @@ app.use('/lecture', lectureRoutes);
 app.use('/submission', submissionRoutes);
 app.use('/permission', permissionRoutes);
 app.use('/mail', mailRoutes);
+app.use('/sensor', sensorRoutes);
 
 
 app.use((req, res, next) => {
