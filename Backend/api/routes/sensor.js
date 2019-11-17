@@ -44,6 +44,15 @@ router.get('/edgeStation', (req, res, next)=>{
 
 
 router.post('/setupSensor', (req, res, next) => {
+    Sensor.findOne().sort({ sensorId: 'desc', _id: -1 }).limit(1)
+                                    .exec()
+                                    .then(docs => {
+                                        console.log(docs);
+                                        var sensorId = 1;
+                                        if (docs)
+                                        {
+                                            sensorId=docs.sensorId + 1;
+                                        }
     const sensor = new Sensor({
         _id : new mongoose.Types.ObjectId(),
         machineId: req.body.machineId,
@@ -53,9 +62,10 @@ router.post('/setupSensor', (req, res, next) => {
         department:req.body.department,
         edgeStationId:req.body.edgeStationId,
         provider:req.body.provider,
-        status:0
+        status:0,
+        sensorId:sensorId
     });
-    course
+    sensor
         .save()
         .then(result => {
             console.log(result);
@@ -65,6 +75,7 @@ router.post('/setupSensor', (req, res, next) => {
         message: "New sensor Created",
         
     });
+})
 });
 
 router.patch("/addSensor", (req, res, next) => {
@@ -79,6 +90,28 @@ router.patch("/addSensor", (req, res, next) => {
             console.log(result);
             res.status(200).json({
                 message: "Sensor Was added Successfully"
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+});
+
+router.patch("/deleteSensor", (req, res, next) => {
+
+
+    const sensorId = req.body.sensorId;
+    Sensor.update({ sensorId: sensorId }, { $set: {
+        status: 0,
+    } })
+        .exec()
+        .then(result => {
+            console.log(result);
+            res.status(200).json({
+                message: "Sensor Was deleted Successfully"
             });
         })
         .catch(err => {
