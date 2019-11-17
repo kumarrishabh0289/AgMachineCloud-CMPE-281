@@ -83,7 +83,7 @@ class FrontPage extends Component {
                     <div className="row" >
                         <div className="col-sm-1 col-md-1"></div>
 
-                        <div className="col-sm-5 col-md-5" style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
+                        <div className="col-sm-5 col-md-5" style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=90)", borderRadius: '10px' }}>
 
                             <h1>
                                  Sign Up
