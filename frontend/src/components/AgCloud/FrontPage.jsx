@@ -60,7 +60,7 @@ class FrontPage extends Component {
 
                                         <div class="form-group">
                                             <label for="where"><h5>Role</h5></label>
-                                             <select id = "myList">
+                                             <select id = "myList" class="form-control">
                                             <option value = "1">Farmer</option>
                                             <option value = "2">Machine Controller</option>
                                             <option value = "3">Service Carrier Staff</option>
