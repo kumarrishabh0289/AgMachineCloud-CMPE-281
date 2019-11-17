@@ -38,15 +38,19 @@ class SensorComponent extends Component {
     }
 
     render() {
+        const divStyle = {
+            marginLeft: '10px',
+            marginBottom: '10px'
+          };
         return (
                   <div className="container">
-                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
+                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)" }}>
 
-                <h1>Sensor!</h1>
+                <h3>Sensor Dashboard</h3>
                 <div className="container">
-                <button class="btn btn-primary" type="button"  onClick={this.onClick} >Add Sensor</button> 
-                <button class="btn btn-primary" type="button"  onClick={this.onClickUpdate} > Update Sensor  </button> 
-                <button class="btn btn-primary" type="button"  onClick={this.onClickDelete}   > Delete Sensor </button>
+                <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClick} >Add Sensor</button> 
+                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > Update Sensor  </button> 
+                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickDelete}   > Delete Sensor </button>
                 
                 { this.state.showResultsDelete ? <SensorDeleteComponent /> : null }
                 { this.state.showResultsAdd ? <SensorAddComponent /> : null }

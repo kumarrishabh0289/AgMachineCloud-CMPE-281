@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
-import SensorUpdateComponent from './SensorUpdateComponent.jsx'
-import SensorDeleteComponent from './SensorDeleteComponent.jsx'
-import SensorAddComponent from './SensorAddComponent.jsx'
-
+import MonitorComponent from './MonitorComponent.jsx'
+import BillingComponent from './BillingComponent.jsx'
+import SMDashboardComponent from './SR/SMDashboardComponent.jsx'
 
 class SRDashboardComponent extends Component {
-
-
     constructor(props) {
         super(props)
         
-
         this.state = {
             welcomeMessage: 'Hey You Are Authorized',
             showResultsAdd: false,
@@ -18,6 +14,7 @@ class SRDashboardComponent extends Component {
             showResultsUpdate: false
 
         }
+
 
         this.onClick = this.onClick.bind(this);
         this.onClickUpdate = this.onClickUpdate.bind(this);
@@ -38,19 +35,24 @@ class SRDashboardComponent extends Component {
     }
 
     render() {
+        const divStyle = {
+            marginLeft: '10px',
+            marginBottom: '10px'
+
+          };
         return (
                   <div className="container">
-                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
+                        <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)" }}>
 
-                <h1>Sensor!</h1>
+                <h3>Service Request Dashboard</h3>
                 <div className="container">
-                <button class="btn btn-primary" type="button"  onClick={this.onClick} >Service Management</button> 
-                <button class="btn btn-primary" type="button"  onClick={this.onClickUpdate} > Contract and Billing Management  </button> 
-                <button class="btn btn-primary" type="button"  onClick={this.onClickDelete}   > Monitor and Track </button>
+                <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClick} >Service Management</button> 
+                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > Contract and Billing Management  </button> 
+                <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClickDelete}   > Monitor and Track </button>
                 
-                { this.state.showResultsDelete ? <SensorDeleteComponent /> : null }
-                { this.state.showResultsAdd ? <SensorAddComponent /> : null }
-                { this.state.showResultsUpdate ? <SensorUpdateComponent /> : null }
+                { this.state.showResultsDelete ? <MonitorComponent /> : null }
+                { this.state.showResultsAdd ? <SMDashboardComponent /> : null }
+                { this.state.showResultsUpdate ? <BillingComponent /> : null }
 
                 </div>
                 </div>
