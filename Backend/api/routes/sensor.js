@@ -62,7 +62,7 @@ router.get('/addedSensor', (req, res, next)=>{
 });
 
 
-router.post('/setupSensor', (req, res, next) => {
+router.post('/add', (req, res, next) => {
 	Sensor.findOne().sort({sensorId: 'desc', _id: -1}).limit(1)
 		.exec()
 		.then(docs => {
@@ -94,5 +94,20 @@ router.post('/setupSensor', (req, res, next) => {
 			});
 		})
 });
+router.put("/delete", (req, res, next) => {
+
+    Sensor.remove({ sensorId:req.body.sensorId })
+        .exec()
+        .then(result => {
+            res.status(200).json({ message: "Deleted Successfully" });
+
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({error:err});
+        })
+    })
+    
+
 
 module.exports = router;
