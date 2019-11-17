@@ -88,7 +88,7 @@ router.post('/add', (req, res, next) => {
 					console.log(result);
 				})
 				.catch(err => console.log(err));
-			res.status(201).json({
+			res.status(200).json({
 				message: "New sensor Created",
 				
 			});
