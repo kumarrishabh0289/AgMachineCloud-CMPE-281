@@ -52,24 +52,75 @@ class LoginComponent extends Component {
     render() {
         return (
             <div>
-                <h1>Login</h1>
-                <div className="container">
-
-                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-
-                    User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-                    Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
-                </div>
-                <GoogleLogin
-                    clientId="624602059574-qsv45kcgn89v376114ql2ps2t5rljfd7.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-                />
                 
+                <div class="container-fluid">
+                <div class="col-sm-5 col-md-5 container" style={{ backgroundColor: "white", opacity: .7, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
+
+                <h1>Login</h1>
+                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                    {this.state.showSuccessMessage && <div>Login Successful</div>}
+                    
+                     <div class="row" >
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <br />
+                                        <div class="form-group">
+                                            <label for="where"><h5>Username</h5></label>
+                                            <input type="text" class="form-control" id="where" placeholder="Your username" />
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-1 col-md-1">
+
+                                    </div>
+
+                                </div>
+
+                    <div class="row" >
+
+                                    <div class="col-sm-6 col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="where"><h5>Password</h5></label>
+                                            <input type="password" class="form-control" id="password" placeholder="password" />
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="where"><h5>Role</h5></label>
+                                            <input type="text" class="form-control" id="role" placeholder="role" />
+                                        </div>
+                                    </div>
+                                      <div class="col-sm-6 col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="where"><h5>Edge Station ID</h5></label>
+                                            <input type="text" class="form-control" id="role" placeholder="Type station ID" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+               <div class="row" >
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                        
+                                            <br/>
+                                            <input type="submit" class="form-control btn btn-danger" />
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+               
+                </div>
+              
+                </div>
             </div>
         )
     }
