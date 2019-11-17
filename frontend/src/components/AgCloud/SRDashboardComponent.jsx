@@ -4,7 +4,7 @@ import SensorDeleteComponent from './SensorDeleteComponent.jsx'
 import SensorAddComponent from './SensorAddComponent.jsx'
 
 
-class SensorComponent extends Component {
+class SRDashboardComponent extends Component {
 
 
     constructor(props) {
@@ -44,9 +44,9 @@ class SensorComponent extends Component {
 
                 <h1>Sensor!</h1>
                 <div className="container">
-                <button class="btn btn-primary" type="button"  onClick={this.onClick} >Add Sensor</button> 
-                <button class="btn btn-primary" type="button"  onClick={this.onClickUpdate} > Update Sensor  </button> 
-                <button class="btn btn-primary" type="button"  onClick={this.onClickDelete}   > Delete Sensor </button>
+                <button class="btn btn-primary" type="button"  onClick={this.onClick} >Service Management</button> 
+                <button class="btn btn-primary" type="button"  onClick={this.onClickUpdate} > Contract and Billing Management  </button> 
+                <button class="btn btn-primary" type="button"  onClick={this.onClickDelete}   > Monitor and Track </button>
                 
                 { this.state.showResultsDelete ? <SensorDeleteComponent /> : null }
                 { this.state.showResultsAdd ? <SensorAddComponent /> : null }
@@ -59,4 +59,4 @@ class SensorComponent extends Component {
 
 }
 
-export default SensorComponent
+export default SRDashboardComponent
