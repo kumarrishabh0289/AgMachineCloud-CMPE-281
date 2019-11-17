@@ -32,8 +32,7 @@ router.post('/register', (req, res, next) => {
 		email: req.body.email,
 		name: req.body.name,
 		password: mystr,
-		role: req.body.role,
-		edgeStationId: req.body.edgeStationId
+		role: req.body.role
 	});
 	user
 		.save()
