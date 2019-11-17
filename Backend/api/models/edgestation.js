@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema({
+const edgeStationSchema = mongoose.Schema({
 	_id: mongoose.Schema.Types.ObjectId,
 	edgeStationId: Number,
 	name: String,
@@ -13,4 +13,4 @@ const userSchema = mongoose.Schema({
 	userEmail: String
 });
 
-module.exports = mongoose.model('EdgeStation', userSchema);
+module.exports = mongoose.model('EdgeStation', edgeStationSchema);

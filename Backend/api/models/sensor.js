@@ -10,7 +10,6 @@ const sensorSchema = mongoose.Schema({
     provider:String,
     name:String,
     status:Number
-    
    });
 
 module.exports = mongoose.model('Sensor', sensorSchema);

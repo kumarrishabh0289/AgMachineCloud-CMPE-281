@@ -4,21 +4,12 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const productRoutes = require('./api/routes/products');
 const userRoutes = require('./api/routes/user');
 const profileRoutes = require('./api/routes/profile');
 const loginRoutes = require('./api/routes/login');
 const edgeStationRoutes = require('./api/routes/edgestation');
-const courseRoutes = require('./api/routes/course');
-const enrollRoutes = require('./api/routes/enroll');
-const assignmentRoutes = require('./api/routes/assignment');
-const quizRoutes = require('./api/routes/quiz');
-const announcementRoutes = require('./api/routes/announcement');
-const lectureRoutes = require('./api/routes/lecture');
-const submissionRoutes = require('./api/routes/submission');
-const permissionRoutes = require('./api/routes/permission');
-const mailRoutes = require('./api/routes/mail');
 const sensorRoutes = require('./api/routes/sensor');
+const machineRoutes = require('./api/routes/machine');
 let passport = require("passport");
 const passportJWT = require("passport-jwt");
 
@@ -54,23 +45,12 @@ app.post("/secret", passport.authenticate('jwt', {session: false}, null), functi
 	res.json({'message': "Success"});
 });
 
-app.use('/product', productRoutes);
 app.use('/user', userRoutes);
-
 app.use('/profile', profileRoutes);
-app.use('/course', courseRoutes);
 app.use('/login', loginRoutes);
 app.use('/edgestation', edgeStationRoutes);
-app.use('/enroll', enrollRoutes);
-app.use('/assignment', assignmentRoutes);
-app.use('/quiz', quizRoutes);
-app.use('/announcement', announcementRoutes);
-app.use('/lecture', lectureRoutes);
-app.use('/submission', submissionRoutes);
-app.use('/permission', permissionRoutes);
-app.use('/mail', mailRoutes);
 app.use('/sensor', sensorRoutes);
-
+app.use('/machine', machineRoutes);
 
 app.use((req, res, next) => {
 	const error = new Error('Api not found');
