@@ -42,6 +42,28 @@ router.get('/edgeStation', (req, res, next)=>{
         
 });
 
+router.get('/addedSensor', (req, res, next)=>{
+    const edgeStationId = req.query.edgeStationId;
+    const machineId = req.query.machineId
+    Sensor.find({ edgeStationId: edgeStationId, machineId: machineId, status:1  })
+        .exec()
+        .then(doc => {
+        console.log("From database",doc);
+        if (doc){
+            res.status(200).json(doc);
+        }
+        else {
+            res.status(404).json({message:"not a valid machineId and edgeStationId "});
+        }
+        
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
+    })
+        
+});
+
 
 router.post('/setupSensor', (req, res, next) => {
     Sensor.findOne().sort({ sensorId: 'desc', _id: -1 }).limit(1)
@@ -59,7 +81,6 @@ router.post('/setupSensor', (req, res, next) => {
         name: req.body.name,
         sensorType:req.body.sensorType,
         desc:req.body.desc,
-        department:req.body.department,
         edgeStationId:req.body.edgeStationId,
         provider:req.body.provider,
         status:0,
