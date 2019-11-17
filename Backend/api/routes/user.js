@@ -42,33 +42,13 @@ router.post('/', (req, res, next) => {
         email: req.body.email,
         name: req.body.name,
         password: mystr,
-        role: req.body.role
+        role: req.body.role,
+        edgeStationId: req.body.edgeStationId
     });
     user
         .save()
         .then(result => {
             console.log(result);
-
-            const profile = new Profile({
-                _id: new mongoose.Types.ObjectId(),
-                email: req.body.email,
-                image: "",
-                mobile: "",
-                about: "",
-                city: "",
-                country: "",
-                company: "",
-                school: "",
-                hometown: "",
-                languages: "",
-                gender: "",
-
-            });
-            profile
-                .save()
-                .then(result1 => {
-                    console.log(result1);
-                })
         })
         .catch(err => console.log(err));
     res.writeHead(200, {

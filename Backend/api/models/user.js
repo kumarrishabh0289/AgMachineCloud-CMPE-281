@@ -9,7 +9,8 @@ const userSchema = mongoose.Schema({
     },
     name: String,
     password: String,
-    role: String
+    role: String,
+    edgeStationId: Number
     
    });
 
