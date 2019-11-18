@@ -107,11 +107,13 @@ router.patch("/update", (req, res) => {
     }
     else
     {
-        Sensor.find({ sensorId: sensorId  })
+        Sensor.findOne({ sensorId: sensorId  })
         .exec()
         .then(doc => {
             if (doc){
-                var diff = Math.abs(new Date() - new Date(doc.startPause.replace(/-/g,'/')));
+                console.log(doc.startPause.getTime());
+                var strdate=doc.startPause;
+                var diff = Math.abs(new Date().getTime() - doc.startPause.getTime());
                 console.log(diff);
                 Sensor.update({sensorId: sensorId}, {
                     $set: {
