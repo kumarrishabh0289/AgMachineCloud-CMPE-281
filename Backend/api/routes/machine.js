@@ -46,6 +46,7 @@ router.post('/setupMachine', (req, res) => {
 			if (docs) {
 				machineId = docs.machineId + 1;
 			}
+			let img = req.body.machineType +".jpg"
 			const machine = new Machine({
 				_id: new mongoose.Types.ObjectId(),
 				machineId: machineId,
@@ -54,7 +55,8 @@ router.post('/setupMachine', (req, res) => {
 				desc: req.body.desc,
 				edgeStationId: req.body.edgeStationId,
 				provider: req.body.provider,
-				machineStatus: 0
+				machineStatus: 0,
+				image:img
 			});
 			machine
 				.save()

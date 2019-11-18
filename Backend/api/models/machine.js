@@ -8,7 +8,8 @@ const machineSchema = mongoose.Schema({
 	edgeStationId: Number,
 	provider: String,
 	name: String,
-	machineStatus: Number
+	machineStatus: Number,
+	image:String
 });
 
 module.exports = mongoose.model('Machine', machineSchema);

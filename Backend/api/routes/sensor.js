@@ -20,29 +20,12 @@ router.get('/', (req, res, next) => {
 	
 });
 
-router.get('/edgeStation', (req, res, next) => {
-	const edgeStationId = req.query.edgeStationId;
-	const machineId = req.query.machineId;
-	Sensor.find({edgeStationId: edgeStationId, machineId: machineId})
-		.exec()
-		.then(doc => {
-			console.log("From database", doc);
-			if (doc) {
-				res.status(200).json(doc);
-			} else {
-				res.status(404).json({message: "not a valid machineId and edgeStationId "});
-			}
-		})
-		.catch(err => {
-			console.log(err);
-			res.status(500).json({error: err});
-		})
-});
 
-router.get('/addedSensor', (req, res, next)=>{
-    const edgeStationId = req.query.edgeStationId;
+
+router.get('/sensoronmachine', (req, res, next)=>{
+    
     const machineId = req.query.machineId
-    Sensor.find({ edgeStationId: edgeStationId, machineId: machineId, status:1  })
+    Sensor.find({ machineId: machineId  })
         .exec()
         .then(doc => {
         console.log("From database",doc);
@@ -50,7 +33,7 @@ router.get('/addedSensor', (req, res, next)=>{
             res.status(200).json(doc);
         }
         else {
-            res.status(404).json({message:"not a valid machineId and edgeStationId "});
+            res.status(404).json({message:"not a valid machineId"});
         }
         
     })
