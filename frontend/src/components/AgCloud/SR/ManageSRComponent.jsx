@@ -15,12 +15,14 @@ class ManageSRComponent extends Component {
             welcomeMessage: 'Hey You Are Authorized',
             allSensors: []
         }
+        this.onClickStatus = this.onClickStatus.bind(this);
+
         
     }
     
     loadSensors() {
         //loads topics to show on left side of home screen
-        axios.get(API_URL + '/sensor/edgeStation?edgeStationId=9511301&machineId=1')
+        axios.get(API_URL + '/servicerequest?machineId=1233')
             .then((response) => {
                 //update the state with the response data
                 console.log(response.data)
@@ -31,8 +33,39 @@ class ManageSRComponent extends Component {
     }
 
     componentDidMount() {
-        console.log("hi update!")
         this.loadSensors();
+    }
+
+    onClickStatus = (param, param2)  => e => {
+    
+        e.preventDefault();
+        const data = {
+            serviceRequestId: param,
+            status: param2
+        }
+        axios.defaults.withCredentials = true;
+        //make a post request with the user data
+        axios.patch(API_URL + '/servicerequest/update', data)
+            .then((response) => {
+                if (response.status === 200) {
+
+                    console.log(response.data);
+                    this.setState({
+
+                        signup_status: response.data.message,
+                        showSuccessMessage: true
+                    })
+                    
+                    this.loadSensors();
+                } else {
+                    console.log(response.data.error);
+                    this.setState({
+                        
+                        signup_status: response.data.error,
+                        hasFailed: true
+                    })
+                }
+            });
     }
     
    
@@ -45,14 +78,14 @@ class ManageSRComponent extends Component {
             return (
 
                 <tr>
-                <td>{topic.name}</td>
-                <td> {topic.sensorType} </td>
-                <td>{topic.provider}</td>
-                <td>{topic.provider}</td>
-                <td>{topic.provider}</td>
+                 <td> {topic.serviceRequestId} </td>
+                <td>{topic.serviceRequestName}</td>
+                <td>{topic.machineId}</td>
+                <td>{topic.date}</td>
+                <td>{topic.status}</td>
                 <td>              
-                      <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClick} >Cancel SR</button> 
-                <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClick} >Close SR </button> 
+                      <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClickStatus(topic.serviceRequestId,"cancel" )} >Cancel SR</button> 
+                <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClickStatus(topic.serviceRequestId, "close" )} >Close SR </button> 
                 </td>
                 </tr>
             )
@@ -68,7 +101,7 @@ class ManageSRComponent extends Component {
                             <tr>
                                 <th> ID  </th>
                                 <th>Service Request</th>
-                                <th>Machine Type</th>
+                                <th>Machine ID</th>
                                 <th> Date  </th>
                                 <th> Status  </th>
                                 <th>   </th>
