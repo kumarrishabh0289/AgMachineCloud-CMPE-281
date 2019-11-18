@@ -50,12 +50,16 @@ class SRDashboardComponent extends Component {
                 <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > Contract and Billing Management  </button> 
                 <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClickDelete}   > Monitor and Track </button>
                 
+                </div>
+                </div>
+                <br/>
+                <div  style={divStyle}    >
                 { this.state.showResultsDelete ? <MonitorComponent /> : null }
                 { this.state.showResultsAdd ? <SMDashboardComponent /> : null }
                 { this.state.showResultsUpdate ? <BillingComponent /> : null }
 
                 </div>
-                </div>
+              
                 </div>
         )}
 

@@ -14,6 +14,9 @@ class SensorUpdateComponent extends Component {
             welcomeMessage: 'Hey You Are Authorized',
             allSensors: []
         }
+
+        
+        this.onClickDelete = this.onClickDelete.bind(this);
         
     }
     
@@ -32,8 +35,41 @@ class SensorUpdateComponent extends Component {
     }
 
     componentDidMount() {
-        console.log("hi update!")
         this.loadSensors();
+    }
+
+    onClickDelete = param => e =>{
+        
+        console.log("delete ",param)
+        e.preventDefault();
+        const data = {
+            sensorId: param
+        }
+        console.log(data)
+        axios.defaults.withCredentials = true;
+        //make a post request with the user data
+        axios.put(API_URL + '/sensor/delete', data)
+            .then((response) => {
+                console.log("Status Code : ", response.status);
+                if (response.status === 200) {
+
+                    console.log(response.data);
+                    this.setState({
+
+                        signup_status: response.data.message,
+                        showSuccessMessage: true
+                    })
+                    
+                    this.loadSensors();
+                } else {
+                    console.log(response.data.error);
+                    this.setState({
+                        
+                        signup_status: response.data.error,
+                        hasFailed: true
+                    })
+                }
+            });
     }
     
    
@@ -64,7 +100,7 @@ class SensorUpdateComponent extends Component {
                 <td bgColor={color}>{status_text}</td>
                 <td>              
                       <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClick} >View Data</button> 
-                <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClick} >Delete </button> 
+                <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClickDelete(topic.sensorId)} >Delete </button> 
                 </td>
                 </tr>
             )

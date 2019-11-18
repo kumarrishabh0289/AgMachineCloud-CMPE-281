@@ -18,8 +18,13 @@ class MonitorComponent extends Component {
     
    
     render() {
+        const divStyle = {
+            marginLeft: '10px',
+            marginBottom: '10px'
+
+          };
         return (
-                  <div className="container">
+                  <div className="container" style={divStyle} >
                         <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)"}}>
 
                 <h3>Monitor Component!</h3>

@@ -30,8 +30,10 @@ class CreateSRComponent extends Component {
         
         e.preventDefault();
         const data = {
-            md: this.state.md,
-            sr: this.state.sr 
+            machineId: this.state.md,
+            serviceRequestName: this.state.sr,
+            date: Date(Date.now()),
+            status: "pending"
         }
         
         console.log("hihihhi", data)

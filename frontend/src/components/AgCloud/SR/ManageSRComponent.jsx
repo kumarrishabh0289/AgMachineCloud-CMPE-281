@@ -31,7 +31,6 @@ class ManageSRComponent extends Component {
     }
 
     componentDidMount() {
-        console.log("hi update!")
         this.loadSensors();
     }
     
@@ -68,7 +67,7 @@ class ManageSRComponent extends Component {
                             <tr>
                                 <th> ID  </th>
                                 <th>Service Request</th>
-                                <th>Machine Type</th>
+                                <th>Machine ID</th>
                                 <th> Date  </th>
                                 <th> Status  </th>
                                 <th>   </th>
