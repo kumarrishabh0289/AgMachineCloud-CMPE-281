@@ -10,6 +10,7 @@ const loginRoutes = require('./api/routes/login');
 const edgeStationRoutes = require('./api/routes/edgestation');
 const sensorRoutes = require('./api/routes/sensor');
 const machineRoutes = require('./api/routes/machine');
+const serviceRequestRoutes = require('./api/routes/servicerequest');
 let passport = require("passport");
 const passportJWT = require("passport-jwt");
 
@@ -51,6 +52,7 @@ app.use('/login', loginRoutes);
 app.use('/edgestation', edgeStationRoutes);
 app.use('/sensor', sensorRoutes);
 app.use('/machine', machineRoutes);
+app.use('/servicerequest', serviceRequestRoutes);
 
 app.use((req, res, next) => {
 	const error = new Error('Api not found');
