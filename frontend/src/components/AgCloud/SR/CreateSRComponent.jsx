@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import axios from 'axios';
+import { API_URL } from '../../../Constants'
 
 
 class CreateSRComponent extends Component {
@@ -31,11 +32,33 @@ class CreateSRComponent extends Component {
         e.preventDefault();
         const data = {
             machineId: this.state.md,
-            serviceRequestName: this.state.sr,
-            date: Date(Date.now()),
-            status: "pending"
+            serviceRequestName: this.state.sr
         }
         
+        axios.defaults.withCredentials = true;
+        //make a post request with the user data
+        axios.post(API_URL + '/servicerequest/add', data)
+            .then((response) => {
+                console.log("Status Code : ", response.status);
+                if (response.status === 200) {
+
+                    console.log(response.data);
+                    this.setState({
+
+                        signup_status: response.data.message,
+                        showSuccessMessage: true
+                    })
+                } else {
+                    console.log(response.data.error);
+                    this.setState({
+
+                        
+                        signup_status: response.data.error,
+                        hasFailed: true
+                    })
+                }
+            });
+
         console.log("hihihhi", data)
     }
     
