@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const sensorSchema = mongoose.Schema({
+const sensorDataSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     sensorId: Number,
     machineId: Number,
@@ -10,9 +10,9 @@ const sensorSchema = mongoose.Schema({
     provider:String,
     name:String,
     status:Number,
+    data: String,
     startDate:Date,
-    startPause:Date,
     totalPause:Number
    });
 
-module.exports = mongoose.model('Sensor', sensorSchema);
+module.exports = mongoose.model('SensorData', sensorDataSchema);
