@@ -43,7 +43,7 @@ class WelcomeComponent extends Component {
                         <br />
                         <h2>Farmer Dashboard</h2><br />
                         <h4>Welcome, {sessionStorage.name}</h4>
-                        <div class="card-columns">
+                          <div class="card-columns">
                             {
                                 this.state.edgestation.map(edgestation => {
 
@@ -58,6 +58,8 @@ class WelcomeComponent extends Component {
                                                     </div>
                                                     <div class="card-body ">
                                                         <p class="card-text">
+                                                        <iframe src={"https://maps.google.com/maps?q="+edgestation.latitude+","+edgestation.longitude+"&z=15&output=embed"} width="300" height="270" frameborder="0" style={{border:0}}></iframe>
+                      
                                                             <table>
                                                                 <tr>
                                                                     <th>EdgeStation ID</th><td>{edgestation.edgeStationId}</td>
