@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { API_URL } from '../../Constants'
 import axios from 'axios';
 import Draggable from 'react-draggable';
+import { Chart } from "react-google-charts";
 class WelcomeComponent extends Component {
 
     constructor(props) {
@@ -16,108 +17,138 @@ class WelcomeComponent extends Component {
 
     }
 
-    componentDidMount() {
-        let email = sessionStorage.authenticatedUser;
-        axios.get(API_URL + '/edgestation/email', { params: { email } })
-            .then((response) => {
-                console.log(response.data);
-                this.setState({
-                    edgestation: this.state.edgestation.concat(response.data)
-                });
-            });
-    }
-    ProgressButton = (edgestation) => {
-        sessionStorage.setItem('edgeStation', edgestation.edgeStationId);
-        this.props.history.push(`/edgestation`)
-    }
+
+
 
     render() {
-       
-      
+        var chartEvents = [
+            {
+                eventName: "select",
+                callback({ chartWrapper }) {
+                    console.log("Selected ", chartWrapper.getChart().getSelection());
+                }
+            }
+        ];
+
+        var data = [
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', 1000, 400],
+            ['2005', 1170, 460],
+            ['2006', 660, 1120],
+            ['2007', 1030, 540]
+        ];
+
+        var data1 = [
+            ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ];
+
+        var options = {
+            title: 'Company Performance',
+            curveType: 'function',
+            legend: { position: 'bottom' },
+            backgroundColor: { fill:'transparent' }
+        };
+
+        var options1 = {
+            title: 'Sensor Performance',
+            curveType: 'function',
+            legend: { position: 'bottom' },
+            backgroundColor: { fill:'transparent' }
+        };
+
+
         if (sessionStorage.role === 'Farmer') {
             return (
-                <div class="container">
-                    
-
-                    <div class="body-div">
-                        <br />
-                        <h2>Farmer Dashboard</h2><br />
-                        <h4>Welcome, {sessionStorage.name}</h4>
-                          <div class="card-columns">
-                            {
-                                this.state.edgestation.map(edgestation => {
-
-                                    return (
-
-                                        <Draggable>
-                                            <div>
-
-                                                <div class="card bg-info text-white">
-                                                    <div class="card-header">
-                                                        {edgestation.name}
-                                                    </div>
-                                                    <div class="card-body ">
-                                                        <p class="card-text">
-                                                        <iframe src={"https://maps.google.com/maps?q="+edgestation.latitude+","+edgestation.longitude+"&z=15&output=embed"} width="300" height="270" frameborder="0" style={{border:0}}></iframe>
-                      
-                                                            <table>
-                                                                <tr>
-                                                                    <th>EdgeStation ID</th><td>{edgestation.edgeStationId}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Latitude</th>
-                                                                    <td>{edgestation.latitude}</td>
-                                                                </tr>
+                <div  style={{ backgroundColor: "lightblue", opacity: .8, filter: "Alpha(opacity=80)" , borderRadius: '10px' }}>
+                    <div class="container">
 
 
-                                                                <tr>
-                                                                    <th>Longitude</th><td>{edgestation.longitude}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Address</th> <td>{edgestation.address}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>City</th><td>{edgestation.city}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Country</th><td>{edgestation.country}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>State</th><td>{edgestation.state}</td>
-                                                                </tr>
-                                                               
+                        <div class="body-div">
+                            <br />
+                            <h2>Farmer Dashboard</h2><br />
+                            <h4>Welcome, {sessionStorage.name}</h4>
+                            <div class="card-columns">
 
-                                                            </table>
+                                <div class="card bg-warning text-white" >
+                                    <div class="card-body">
+                                        <h4 class="card-title">Total Edge Stations  <h1>2</h1></h4>
+                                        <p class="card-text">Total .</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
 
-                                                        </p>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                    <button onClick={() => this.ProgressButton(edgestation)} class="btn btn-primary">Goto EdgeStation</button>
-                                                    </div>
+                                <div class="card bg-danger text-white" >
+                                    <div class="card-body">
+                                        <h4 class="card-title">Total Machines  <h1>5</h1></h4>
+                                        <p class="card-text">Some example text. Some example text.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
 
-                                                </div>
-                                            </div>
-                                        </Draggable>
+                                <div class="card bg-success text-white" >
+                                    <div class="card-body">
+                                        <h4 class="card-title">Total Available Sensor <h1>15</h1></h4>
+                                        <p class="card-text">Some example text. Some example text.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
 
-                                    )
-                                })
-                            }
+
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <Chart
+                                    chartType="LineChart"
+                                    data={data}
+                                    options={options}
+                                    graphID="LineChart"
+                                    width="100%"
+                                    height="400px"
+                                    chartEvents={chartEvents}
+                                />
+                                </div>
+
+                                <div class="col-sm-6 col-md-6">
+                                <Chart
+                                    chartType="BarChart"
+                                    data={data1}
+                                    options={options1}
+                                    graphID="BarChart"
+                                    width="100%"
+                                    height="400px"
+                                    chartEvents={chartEvents}
+                                />
+                                </div>
+                            </div>
 
 
                         </div>
+
+
+                        <Link to="/totaledgestation"><button class="btn btn-success">Available Edge Station</button></Link>
                     </div>
 
-                    <Link to="/edgestationcreate"><button class="btn btn-success">Create new Edge Station</button></Link>
                 </div>
             )
         }
         else {
             return (
-                <div class="container">
-                    <div class="body-div">
-                        <h3>You are not authorized to view this page.</h3>
+                <>
+                    <div class="container">
+                        <div class="body-div">
+                            <h3>You are not authorized to view this page.</h3>
+                        </div>
                     </div>
-                </div>
+
+                </>
             )
         }
     }
