@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const ServiceRequest = require('../models/servicerequest');
-const Sensor = require('../models/sensor');
 
 
 router.get('/', (req, res, next) => {

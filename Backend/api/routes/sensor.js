@@ -62,8 +62,10 @@ router.post('/add', (req, res, next) => {
 				desc: req.body.desc,
 				edgeStationId: req.body.edgeStationId,
 				provider: req.body.provider,
-				status: 0,
-				sensorId: sensorId
+				status: 1,
+                sensorId: sensorId,
+                startDate:Date.now(),
+                totalPause:0
 			});
 			sensor
 				.save()
@@ -77,6 +79,75 @@ router.post('/add', (req, res, next) => {
 			});
 		})
 });
+
+router.patch("/update", (req, res) => {
+    const sensorId = req.body.sensorId;
+    if (req.body.status == 2 ||req.body.status == 0 )
+    {
+        Sensor.updateOne({sensorId: sensorId}, {
+			$set: {
+                startPause:Date.now(),
+				status: req.body.status,
+			}
+		})
+		.exec()
+		.then(result => {
+			console.log(result);
+			res.status(200).json({
+				message: "Sensor status was updated Successfully"
+			});
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({
+				error: err
+			});
+		});
+
+    }
+    else
+    {
+        Sensor.find({ sensorId: sensorId  })
+        .exec()
+        .then(doc => {
+            if (doc){
+                var diff = Math.abs(new Date() - new Date(doc.startPause.replace(/-/g,'/')));
+                console.log(diff);
+                Sensor.update({sensorId: sensorId}, {
+                    $set: {
+                        startPause:0,
+                        status: req.body.status,
+                        totalPause:doc.totalPause+diff
+                        
+                    }
+                })
+                .exec()
+                .then(result => {
+                    console.log(result);
+                    res.status(200).json({
+                        message: "Sensor status was updated Successfully"
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+
+            }
+        })
+.catch(err => {
+    console.log(err);
+    res.status(500).json({
+        error: err
+    })
+})
+    }
+
+	
+});
+
 router.put("/delete", (req, res, next) => {
 
     Sensor.remove({ sensorId:req.body.sensorId })
@@ -90,6 +161,8 @@ router.put("/delete", (req, res, next) => {
             res.status(500).json({error:err});
         })
     })
+
+    
     
 
 
