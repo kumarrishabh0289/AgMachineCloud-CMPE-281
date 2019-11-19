@@ -31,6 +31,11 @@ class EdgeStation extends Component {
         this.props.history.push(`/sensor`)
     }
 
+    Sensor = () => {
+       
+        this.props.history.push(`/sensordata`)
+    }
+
     render() {
        
       
@@ -83,7 +88,7 @@ class EdgeStation extends Component {
                                                         </p>
                                                     </div>
                                                     <div class="card-footer">
-                                                    <button onClick={() => this.ProgressButton(machine)} class="btn btn-primary">Goto Machine Dashboard</button>
+                                                    <button onClick={() => this.ProgressButton(machine)} class="btn btn-primary">Goto Machine Dashboard</button><br/> <br/> <button onClick={() => this.Sensor()} class="btn btn-danger">Display Machine's Sensor Data</button>
                                                     </div>
 
                                                 </div>
