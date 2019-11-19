@@ -12,10 +12,12 @@ const sensorRoutes = require('./api/routes/sensor');
 const machineRoutes = require('./api/routes/machine');
 const serviceRequestRoutes = require('./api/routes/servicerequest');
 const sensorDataRoutes = require('./api/routes/sensordata');
+
 let passport = require("passport");
 const passportJWT = require("passport-jwt");
-
-
+var multer = require('multer');
+const path = require("path");
+var Gallery = require('express-photo-gallery');
 require('./api/auth/auth');
 
 mongoose.connect('mongodb+srv://openhome:' +
@@ -55,6 +57,50 @@ app.use('/sensor', sensorRoutes);
 app.use('/machine', machineRoutes);
 app.use('/servicerequest', serviceRequestRoutes);
 app.use('/sensordata', sensorDataRoutes);
+
+
+
+
+
+var options = {
+  title: 'My Awesome Photo Gallery'
+};
+
+app.use('/droneimage', Gallery('../Backend', options));
+
+
+
+
+const storage = multer.diskStorage({
+  destination: "",
+  filename: function (req, file, cb) {
+      cb(null, "DRONE" + Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 999999999999999999999999},
+}).single("myImage");
+
+
+app.post('/nodedrone', (req, res, next) => {
+  upload(req, res, (err) => {
+
+      console.log("Request ---", req.body);
+      console.log("Request file ---", JSON.stringify(req.file));  //Here you get file.
+      // var filepath = req.file;
+      // var filepath = filepath.filename;
+      res.status(200).json({
+        "message":"done"
+    });
+      
+
+  });
+ 
+});
+
+
 
 app.use((req, res, next) => {
 	const error = new Error('Api not found');
