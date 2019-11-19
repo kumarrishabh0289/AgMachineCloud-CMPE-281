@@ -43,24 +43,24 @@ class WelcomeComponent extends Component {
         ];
 
         var data = [
-            ['Year', 'Sales', 'Expenses'],
-            ['2004', 1000, 400],
-            ['2005', 1170, 460],
-            ['2006', 660, 1120],
-            ['2007', 1030, 540]
+            ['Year', 'Machine Usage', 'Sensor Usage'],
+            ['2016', 1000, 400],
+            ['2017', 1170, 460],
+            ['2018', 660, 1120],
+            ['2019', 1030, 540]
         ];
 
         var data1 = [
-            ['Task', 'Hours per Day'],
-            ['Work', 11],
-            ['Eat', 2],
-            ['Commute', 2],
-            ['Watch TV', 2],
-            ['Sleep', 7]
+            ['Sensor', 'Hours per Day'],
+            ['Humidity', 11],
+            ['Camera', 2],
+            ['GPS', 24],
+            ['Moisture', 2],
+            ['Temperature', 7]
         ];
 
         var options = {
-            title: 'Company Performance',
+            title: 'Machine and Sensor Usage',
             curveType: 'function',
             legend: { position: 'bottom' },
             backgroundColor: { fill: 'transparent' },

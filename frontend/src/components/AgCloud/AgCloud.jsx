@@ -12,6 +12,7 @@ import SensorComponent from './SensorComponent.jsx'
 import SRDashboardComponent from './SRDashboardComponent.jsx'
 import EdgeStation from './EdgeStation'
 import TotalAvailableEdgeStation from './TotalAvailableEdgeStation'
+import SensorData from './SensorData'
 
 
 class AgCloud extends Component {
@@ -29,6 +30,7 @@ class AgCloud extends Component {
                             <Route path="/srdashboard" component={SRDashboardComponent}/>
                             <Route path="/edgestation" component={EdgeStation}/>
                             <Route path="/totaledgestation" component={TotalAvailableEdgeStation}/>
+                            <Route path="/sensordata" component={SensorData}/>
                             
 
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
