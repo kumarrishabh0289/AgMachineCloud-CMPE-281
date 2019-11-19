@@ -34,7 +34,7 @@ class EdgeStation extends Component {
     render() {
        
       
-        if (sessionStorage.role === 'Farmer') {
+        if (sessionStorage.role === 'Farmer'|| sessionStorage.role === 'MachineController') {
             return (
                 <div class="container">
                     

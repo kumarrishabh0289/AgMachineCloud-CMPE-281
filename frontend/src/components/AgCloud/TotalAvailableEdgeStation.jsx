@@ -34,14 +34,14 @@ class TotalAvailableEdgeStation extends Component {
     render() {
        
       
-        if (sessionStorage.role === 'Farmer') {
+        if (sessionStorage.role === 'Farmer' ||sessionStorage.role === 'MachineController' ) {
             return (
                 <div class="container">
                     
 
                     <div class="body-div">
                         <br />
-                        <h2>Farmer Dashboard</h2><br />
+                        <h2>Machine Controller Dashboard</h2><br />
                         <h4>Welcome, {sessionStorage.name}</h4>
                           <div class="card-columns">
                             {
