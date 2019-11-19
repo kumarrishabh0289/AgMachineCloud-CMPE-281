@@ -111,9 +111,13 @@ router.patch("/update", (req, res) => {
         .exec()
         .then(doc => {
             if (doc){
-                console.log(doc.startPause.getTime());
-                var strdate=doc.startPause;
-                var diff = Math.abs(new Date().getTime() - doc.startPause.getTime());
+                
+                var diff=0;
+                if (doc.startPause)
+                {
+                    diff = Math.abs(new Date().getTime() - doc.startPause.getTime());
+                }
+                
                 console.log(diff);
                 Sensor.update({sensorId: sensorId}, {
                     $set: {

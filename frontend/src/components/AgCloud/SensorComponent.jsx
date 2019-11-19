@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SensorUpdateComponent from './SensorUpdateComponent.jsx'
 import SensorDeleteComponent from './SensorDeleteComponent.jsx'
 import SensorAddComponent from './SensorAddComponent.jsx'
+import SensorManageComponent from './SensorManageComponent.jsx'
 
 
 class SensorComponent extends Component {
@@ -15,12 +16,14 @@ class SensorComponent extends Component {
             welcomeMessage: 'Hey You Are Authorized',
             showResultsAdd: false,
             showResultsDelete: false,
-            showResultsUpdate: false
+            showResultsUpdate: false,
+            showResultsManage: false
 
         }
 
         this.onClick = this.onClick.bind(this);
         this.onClickUpdate = this.onClickUpdate.bind(this);
+        this.onClickManage = this.onClickManage.bind(this);
 
         this.onClickDelete = this.onClickDelete.bind(this);
 
@@ -28,13 +31,16 @@ class SensorComponent extends Component {
     }
 
     onClick() {
-        this.setState({ showResultsAdd: true , showResultsUpdate:false   , showResultsDelete: false  });
+        this.setState({ showResultsAdd: true , showResultsUpdate:false   , showResultsDelete: false, showResultsManage: false  });
     }
     onClickUpdate() {
-        this.setState({ showResultsUpdate: true , showResultsDelete: false   ,  showResultsAdd: false  });
+        this.setState({ showResultsUpdate: true , showResultsDelete: false   ,  showResultsAdd: false, showResultsManage: false  });
+    }
+    onClickManage() {
+        this.setState({ showResultsUpdate: false , showResultsDelete: false   ,  showResultsAdd: false, showResultsManage: true  });
     }
     onClickDelete() {
-        this.setState({ showResultsDelete: true ,  showResultsUpdate: false  , showResultsAdd: false });
+        this.setState({ showResultsDelete: true ,  showResultsUpdate: false  , showResultsAdd: false, showResultsManage: false });
     }
 
     render() {
@@ -50,7 +56,8 @@ class SensorComponent extends Component {
         <h3 style={divStyle}>Sensor Dashboard for Machine ID:{sessionStorage.machine}</h3>
                 <div className="container">
                 <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClick} >Add Sensor</button> 
-                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > All Sensor  </button>                 
+                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > All Sensor  </button>
+                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickManage} > Manage Sensor  </button>                 
 
                 </div>
                 </div>
@@ -60,6 +67,7 @@ class SensorComponent extends Component {
                 { this.state.showResultsDelete ? <SensorDeleteComponent /> : null }
                 { this.state.showResultsAdd ? <SensorAddComponent /> : null }
                 { this.state.showResultsUpdate ? <SensorUpdateComponent /> : null }
+                { this.state.showResultsManage ? <SensorManageComponent /> : null }
 
                 </div>
                 
