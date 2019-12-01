@@ -111,7 +111,7 @@ class EdgeStation extends Component {
             return (
                 <div class="container">
                     <div class="body-div">
-                        <h3>You are not authorized to view this page.</h3>
+                        <h3>Looks like you are not authorized to view this page.</h3>
                     </div>
                 </div>
             )

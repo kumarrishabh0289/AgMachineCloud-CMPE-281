@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Profile = require('../models/profile');
+const ServiceRequest = require('../models/servicerequest');
+const User = require('../models/user');
 var multer = require('multer');
 const path = require("path");
 
+const Machine = require('../models/machine');
 router.get('/', (req, res, next) => {
     Profile.find()
         .exec()
@@ -21,6 +24,42 @@ router.get('/', (req, res, next) => {
 
 });
 
+router.get('/bill', (req, res, next)=>{
+    const email = req.query.email;
+    var t
+	ServiceRequest.find({email: email})
+		.exec()
+		.then(doc => {
+			console.log("From database", doc);
+			if (doc) {
+                t = doc
+			} else {
+				res.status(404).json({message: "not a valid machineId"});
+			}
+        })
+        .then(
+			Machine.find({email: email})
+		.exec()
+		.then(docs => {
+			console.log(docs);
+			res.status(200).json(docs + t);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({
+				error: err
+			})
+		})
+		)
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({error: err});
+		})
+        
+});
+
+
+
 router.get('/email', (req, res, next)=>{
     const email = req.query.email;
     Profile.findOne({ email: email })
@@ -31,7 +70,7 @@ router.get('/email', (req, res, next)=>{
             res.status(200).json(doc);
         }
         else {
-            res.status(404).json({message:"not a valid Email ID"});
+            res.status(404).json({message:"not A valid Email ID"+email+"hi"});
         }
         
     })
