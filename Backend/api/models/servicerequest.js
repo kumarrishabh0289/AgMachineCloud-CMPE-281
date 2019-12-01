@@ -6,7 +6,8 @@ const serviceRequestSchema = mongoose.Schema({
     machineId: Number,
     date: Date,
     serviceRequestName:String,
-    status:String
+    status:String,
+    email:String
    });
 
 module.exports = mongoose.model('ServiceRequest', serviceRequestSchema);

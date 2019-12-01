@@ -38,7 +38,8 @@ router.post('/add', (req, res, next) => {
 				serviceRequestName: req.body.serviceRequestName,
 				date: Date.now(),
 				status: "Pending",
-				serviceRequestId: serviceRequestId
+				serviceRequestId: serviceRequestId,
+				email: req.body.email
 			});
 			serviceRequest
 				.save()

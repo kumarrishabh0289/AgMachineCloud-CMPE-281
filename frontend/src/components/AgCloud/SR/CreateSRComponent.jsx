@@ -32,7 +32,8 @@ class CreateSRComponent extends Component {
         e.preventDefault();
         const data = {
             machineId: this.state.md,
-            serviceRequestName: this.state.sr
+            serviceRequestName: this.state.sr,
+            email: sessionStorage.authenticatedUser
         }
         
         axios.defaults.withCredentials = true;

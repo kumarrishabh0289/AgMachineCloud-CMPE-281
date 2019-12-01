@@ -115,7 +115,7 @@ class TotalAvailableEdgeStation extends Component {
             return (
                 <div class="container">
                     <div class="body-div">
-                        <h3>You are not authorized to view this page.</h3>
+                        <h3>Hmm, you are not authorized to view this page.</h3>
                     </div>
                 </div>
             )
