@@ -18,7 +18,7 @@ class Sensordata extends Component {
 
     componentDidMount() {
 
-        axios.get(API_URL + '/sensordata')
+        axios.get(API_URL + '/sensordata/sensoronmachine', { params: {machineId: sessionStorage.machine } })
             .then((response) => {
                 console.log(response.data);
                 this.setState({
@@ -71,42 +71,88 @@ class Sensordata extends Component {
                                             </tr>
                         {
                             this.state.sensordata.map(sensordata => {
+                                if (sensordata.sensorId==47){
+                                    return (
 
-                                return (
-
-                                    <>
-                                        <tr>
-                                            <td>
-                                                {sensordata.startDate}
-                                            </td>
+                                        <>
+                                            <tr>
+                                                <td>
+                                                    {sensordata.startDate}
+                                                </td>
+                                                
+                                                <td>
+                                                <a href= {sensordata.data}><img src={sensordata.data} height="50" width="50" /></a>
+                                                
+                                                 
+                                                </td>
+                                                <td>
+                                                {sensordata.name}
+                                                </td>
+                                                <td>
+                                                {sensordata.sensorType}
+                                                </td>
+                                                <td>
+                                                {sensordata.desc}
+                                                </td>
+                                                <td>
+                                                {sensordata.provider}
+                                                </td>
+                                                <td>
+                                                {sensordata.status}
+                                                </td>
+                                                <td>
+                                                {sensordata.sensorId}
+                                                </td>
+                                            </tr>
+    
                                             
-                                            <td>
-                                            {sensordata.data}
-                                            </td>
-                                            <td>
-                                            {sensordata.name}
-                                            </td>
-                                            <td>
-                                            {sensordata.sensorType}
-                                            </td>
-                                            <td>
-                                            {sensordata.desc}
-                                            </td>
-                                            <td>
-                                            {sensordata.provider}
-                                            </td>
-                                            <td>
-                                            {sensordata.status}
-                                            </td>
-                                            <td>
-                                            {sensordata.sensorId}
-                                            </td>
-                                        </tr>
+                                        </>
+    
+                                    )
 
-                                        
-                                    </>
+                                }
+                                else{
+                                    return (
 
-                                )
+                                        <>
+                                            <tr>
+                                                <td>
+                                                    {sensordata.startDate}
+                                                </td>
+                                                
+                                                <td>
+                                                {sensordata.data}
+                                                 
+                                                </td>
+                                                <td>
+                                                {sensordata.name}
+                                                </td>
+                                                <td>
+                                                {sensordata.sensorType}
+                                                </td>
+                                                <td>
+                                                {sensordata.desc}
+                                                </td>
+                                                <td>
+                                                {sensordata.provider}
+                                                </td>
+                                                <td>
+                                                {sensordata.status}
+                                                </td>
+                                                <td>
+                                                {sensordata.sensorId}
+                                                </td>
+                                            </tr>
+    
+                                            
+                                        </>
+    
+                                    )
+
+                                }
+                               
+
+                                
                             })
                         }
                         </table>
