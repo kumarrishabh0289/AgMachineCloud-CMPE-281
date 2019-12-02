@@ -12,9 +12,60 @@ class WelcomeComponent extends Component {
         this.state = {
             welcomeMessage: 'Hey You Are Authorized',
             sensor: [],
+            sensors:[],
+            total: 0,
+            countService : 0,
+            countMachine: 0,
+            countEdgeStation: 0
         }
 
 
+    }
+  
+    loadEdgeStation() {
+        console.log("called")
+        //loads topics to show on left side of home screen
+        axios.get(API_URL + '/edgestation/email?email='+sessionStorage.authenticatedUser)
+            .then((response) => {
+
+                response.data.map(topic => {
+    
+                    this.setState({
+                        countEdgeStation: this.state.countEdgeStation + 1
+                    })  
+                })
+               
+            }).then(
+            console.log("done")
+            )
+    }
+
+
+
+    loadBilling() {
+        console.log("called")
+     
+        //loads topics to show on left side of home screen
+        axios.get(API_URL + '/profile/bill?email='+sessionStorage.authenticatedUser)
+            .then((response) => {
+                //update the state with the response data
+                console.log("logs data",response.data)
+                this.setState({
+                    total: response.data.length * 10
+                });
+         
+                response.data.map(topic => {
+                    topic.serviceRequestName != null?   this.setState({
+                        countService: this.state.countService + 1
+                    })   :
+                    this.setState({
+                        countMachine: this.state.countMachine + 1
+                    })  
+                })
+
+                console.log("counts", this.state.countMachine, this.state.countService)
+
+            })
     }
 
     componentDidMount() {
@@ -26,10 +77,16 @@ class WelcomeComponent extends Component {
                     sensor: this.state.sensor.concat(response.data)
                 });
             });
+        axios.get(API_URL + '/sensor/')
+            .then((response) => {
+                console.log("SENSOR",response.data);
+                this.setState({
+                    sensors: this.state.sensors.concat(response.data)
+                });
+            });
+        this.loadBilling();
+        this.loadEdgeStation();
     }
-
-
-
 
     render() {
 
@@ -86,14 +143,15 @@ class WelcomeComponent extends Component {
                             <br />
                             <h2>Farmer Dashboard</h2><br />
                             <h4>Welcome, {sessionStorage.name}</h4>
+                       
+                            {/* <Link to="/servicerequest"><button class=" bottomMargin btn btn-success">Manage Service Requests</button></Link> */}
+                  
                             <div class="row">
                             <div class="col-sm-6 col-md-3">
                             <div class="card bg-warning text-white" >
                                     <div class="card-body">
                                         <h4 class="card-title">Edge Stations</h4>
-                                        <p class="card-text">Total <h1>2</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+            <p class="card-text">Total <h1>{this.state.countEdgeStation}</h1></p>
                                     </div>
                                 </div>
                             </div>
@@ -101,19 +159,18 @@ class WelcomeComponent extends Component {
                             <div class="card bg-danger text-white" >
                                     <div class="card-body">
                                         <h4 class="card-title">Total Machines</h4>
-                                        <p class="card-text">Total <h1>5</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+            <p class="card-text">Total <h1>{this.state.countMachine}</h1></p>
+                                   
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
                             <div class="card bg-success text-white" >
                                     <div class="card-body">
-                                        <h4 class="card-title">Total Sensor </h4>
-                                        <p class="card-text">Total <h1>15</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+                                        <h4 class="card-title">Total Service Request </h4>
+            <p class="card-text">Total <h1>{this.state.countService}</h1></p>
+            <a href="/servicerequest" class=" whiteText  card-link">Manage Service Request</a>
+
                                     </div>
                                 </div>
                             </div>
@@ -121,9 +178,8 @@ class WelcomeComponent extends Component {
                             <div class="card bg-primary text-white" >
                                     <div class="card-body">
                                         <h4 class="card-title">Total Billing</h4>
-                                        <p class="card-text">Total <h1>$105</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+                                        <p class="card-text">Total <h1>$ { this.state.total} </h1></p>
+                                        <a href="/billing" class=" whiteText  card-link">Open Billing</a>
                                     </div>
                                 </div>
                             </div>
@@ -232,12 +288,18 @@ class WelcomeComponent extends Component {
                             <br />
                             <h2>Machine Controller Dashboard</h2><br />
                             <h4>Welcome, {sessionStorage.name}</h4>
+
+                 
+                            <Link to="/servicerequest"><button class="btn btn-success">Manage Service Requests</button></Link>
+                            <Link to="/billing"><button class="btn btn-success">Billing</button></Link>
+
+
                             <div class="row">
                             <div class="col-sm-6 col-md-3">
                             <div class="card bg-warning text-white" >
                                     <div class="card-body">
                                         <h4 class="card-title">Edge Stations</h4>
-                                        <p class="card-text">Total <h1>2</h1></p>
+                                        <p class="card-text">Total <h1>{this.state.countEdgeStation}</h1></p>
                                         <a href="#" class="card-link">Card link</a>
                                         <a href="#" class="card-link">Another link</a>
                                     </div>
@@ -247,7 +309,7 @@ class WelcomeComponent extends Component {
                             <div class="card bg-danger text-white" >
                                     <div class="card-body">
                                         <h4 class="card-title">Total Machines</h4>
-                                        <p class="card-text">Total <h1>5</h1></p>
+                                        <p class="card-text">Total <h1>{this.state.countMachine}</h1></p>
                                         <a href="#" class="card-link">Card link</a>
                                         <a href="#" class="card-link">Another link</a>
                                     </div>
@@ -256,8 +318,8 @@ class WelcomeComponent extends Component {
                             <div class="col-sm-6 col-md-3">
                             <div class="card bg-success text-white" >
                                     <div class="card-body">
-                                        <h4 class="card-title">Total Sensor </h4>
-                                        <p class="card-text">Total <h1>15</h1></p>
+                                        <h4 class="card-title">Total Service Request </h4>
+                                        <p class="card-text">Total <h1>{this.state.countService}</h1></p>
                                         <a href="#" class="card-link">Card link</a>
                                         <a href="#" class="card-link">Another link</a>
                                     </div>
@@ -314,7 +376,7 @@ class WelcomeComponent extends Component {
 
                                         </tr>
                                         {
-                                            this.state.sensor.map(sensor => {
+                                            this.state.sensors.map(sensor => {
                                                 var status_text = ""
                                                 var color = ""
                                                 if (sensor.status == 1) {

@@ -23,6 +23,26 @@ router.get('/', (req, res, next) => {
 });
 
 
+
+router.get('/user', (req, res, next) => {
+	const email = req.query.email;
+	ServiceRequest.find({email: email})
+		.exec()
+		.then(doc => {
+			console.log("From database", doc);
+			if (doc) {
+				res.status(200).json(doc);
+			} else {
+				res.status(404).json({message: "not a valid email"});
+			}
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({error: err});
+		})
+});
+
+
 router.post('/add', (req, res, next) => {
 	ServiceRequest.findOne().sort({serviceRequestId: 'desc', _id: -1}).limit(1)
 		.exec()
