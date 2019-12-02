@@ -9,7 +9,8 @@ const machineSchema = mongoose.Schema({
 	provider: String,
 	name: String,
 	machineStatus: Number,
-	image:String
+	image:String,
+	email:String
 });
 
 module.exports = mongoose.model('Machine', machineSchema);
