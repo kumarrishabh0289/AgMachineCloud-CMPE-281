@@ -12,23 +12,72 @@ class EdgeStation extends Component {
             welcomeMessage: 'Hey You Are Authorized',
             machine: [],
         }
+        this.ChangeStatus = this.ChangeStatus.bind(this);
 
 
     }
 
     componentDidMount() {
+     this.loadMachine();
+    }
+
+    loadMachine(){
         let edgeStationId = sessionStorage.edgeStation;
         axios.get(API_URL + '/machine/edgeStationId', { params: { edgeStationId } })
             .then((response) => {
                 console.log(response.data);
                 this.setState({
-                    machine: this.state.machine.concat(response.data)
+                    machine: response.data
                 });
             });
     }
+
     ProgressButton = (machine) => {
         sessionStorage.setItem('machine', machine.machineId);
         this.props.history.push(`/sensor`)
+    }
+
+    ChangeStatus = (machine, p2) => e => {
+        console.log("hittt")
+        e.preventDefault();
+        if (p2 == 0)
+        {
+            p2 = 1
+        }
+        else
+        {
+            p2 = 0
+        }
+        console.log(p2)
+        const data = {
+            machineId: machine,
+            machineStatus: p2
+        }
+        console.log("passing", data)
+        axios.defaults.withCredentials = true;
+        //make a post request with the user data
+        axios.patch(API_URL + '/machine/update', data)
+            .then((response) => {
+                if (response.status === 200) {
+
+                    console.log(response.data);
+                    this.setState({
+
+                        signup_status: response.data.message,
+                        showSuccessMessage: true
+                    })
+                    
+                    this.loadMachine();
+                } else {
+                    console.log(response.data.error);
+                    this.setState({
+                        
+                        signup_status: response.data.error,
+                        hasFailed: true
+                    })
+                }
+            });
+    
     }
 
     Sensor = () => {
@@ -80,6 +129,12 @@ class EdgeStation extends Component {
                                                                 </tr>
                                                                 <tr>
                                                                     <th>provider</th> <td>{machine.provider}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th> Status</th> <td>{machine.machineStatus == 0 ? "Idle" :  "Active" } 
+                                                                    &nbsp;
+                                                                    <button class="btn btn-default" type="button" onClick={this.ChangeStatus(machine.machineId, machine.machineStatus)} >Change Status</button> 
+                                                                      </td>
                                                                 </tr>
                                                                                                                              
 

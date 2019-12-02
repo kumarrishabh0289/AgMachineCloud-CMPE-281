@@ -19,6 +19,28 @@ router.get('/', (req, res) => {
 		})
 });
 
+router.patch("/update", (req, res) => {
+	const id = req.body.machineId;
+	Machine.update({machineId: id}, {
+			$set: {
+				machineStatus: parseInt(req.body.machineStatus),
+			}
+		})
+		.exec()
+		.then(result => {
+			console.log(result);
+			res.status(200).json({
+				message: "Service Request status was updated Successfully" 
+			});
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({
+				error: err
+			});
+		});
+});
+
 router.get('/edgeStationId', (req, res) => {
 	const edgeStationId = req.query.edgeStationId;
 	Machine.find({edgeStationId: edgeStationId})
