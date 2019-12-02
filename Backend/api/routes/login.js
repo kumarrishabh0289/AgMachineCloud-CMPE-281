@@ -19,6 +19,7 @@ router.post("/", (req, res) => {
 				const body = {user: doc.name};
 				const token = jwt.sign({user: body}, 'rishabh');
 				res.status(200).json({
+					id: doc._id,
 					email: doc.email,
 					name: doc.name,
 					role: doc.role,
