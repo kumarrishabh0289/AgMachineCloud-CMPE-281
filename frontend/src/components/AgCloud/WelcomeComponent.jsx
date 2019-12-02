@@ -12,6 +12,7 @@ class WelcomeComponent extends Component {
         this.state = {
             welcomeMessage: 'Hey You Are Authorized',
             sensor: [],
+            sensors:[],
             total: 0,
             countService : 0,
             countMachine: 0,
@@ -74,6 +75,13 @@ class WelcomeComponent extends Component {
                 console.log(response.data);
                 this.setState({
                     sensor: this.state.sensor.concat(response.data)
+                });
+            });
+        axios.get(API_URL + '/sensor/')
+            .then((response) => {
+                console.log("SENSOR",response.data);
+                this.setState({
+                    sensors: this.state.sensors.concat(response.data)
                 });
             });
         this.loadBilling();
@@ -281,6 +289,7 @@ class WelcomeComponent extends Component {
                             <br />
                             <h2>Machine Controller Dashboard</h2><br />
                             <h4>Welcome, {sessionStorage.name}</h4>
+                            
                             <div class="row">
                             <div class="col-sm-6 col-md-3">
                             <div class="card bg-warning text-white" >
@@ -363,7 +372,7 @@ class WelcomeComponent extends Component {
 
                                         </tr>
                                         {
-                                            this.state.sensor.map(sensor => {
+                                            this.state.sensors.map(sensor => {
                                                 var status_text = ""
                                                 var color = ""
                                                 if (sensor.status == 1) {
