@@ -47,9 +47,7 @@ class SRDashboardComponent extends Component {
                 <h3>Service Request Dashboard</h3>
                 <div className="container">
                 <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClick} >Service Management</button> 
-                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > Contract and Billing Management  </button> 
-                <button class="btn btn-primary" type="button" style={divStyle} onClick={this.onClickDelete}   > Monitor and Track </button>
-                
+                <button class="btn btn-primary" type="button" style={divStyle}  onClick={this.onClickUpdate} > Contract and Billing Management  </button>                 
                 </div>
                 </div>
                 <br/>
