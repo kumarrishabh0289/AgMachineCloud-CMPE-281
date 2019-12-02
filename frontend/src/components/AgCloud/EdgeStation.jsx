@@ -103,7 +103,7 @@ class EdgeStation extends Component {
                         </div>
                     </div>
 
-                    <Link to="/edgestationcreate"><button class="btn btn-success">Create new Machine</button></Link>
+                    <Link to="/machineadd"><button class="btn btn-success">Create new Machine</button></Link>
                 </div>
             )
         }

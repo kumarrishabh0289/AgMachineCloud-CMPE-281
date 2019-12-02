@@ -56,7 +56,8 @@ router.post('/setupMachine', (req, res) => {
 				edgeStationId: req.body.edgeStationId,
 				provider: req.body.provider,
 				machineStatus: 0,
-				image:img
+				image:img,
+				email: req.body.email
 			});
 			machine
 				.save()
@@ -64,7 +65,7 @@ router.post('/setupMachine', (req, res) => {
 					console.log(result);
 				})
 				.catch(err => console.log(err));
-			res.status(201).json({
+			res.status(200).json({
 				message: "New Machine Created",
 			});
 		})
