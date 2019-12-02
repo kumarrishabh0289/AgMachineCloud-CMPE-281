@@ -30,6 +30,9 @@ code {
 .whiteText{
   color: white;
 }
+.bottomMargin{
+margin-bottom: 30px;
+}
 
 .pricing-box-plain{
 	background:#fbfbfb;
