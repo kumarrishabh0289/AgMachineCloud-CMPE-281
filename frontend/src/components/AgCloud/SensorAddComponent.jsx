@@ -37,8 +37,9 @@ class SensorAddComponent extends Component {
             provider: this.state.provider,
             edgeStationId: this.state.edgestationid,
             desc: this.state.dsc,
+            email: sessionStorage.authenticatedUser
         }
-          
+        console.log("data is",data)  
 
         axios.defaults.withCredentials = true;
         //make a post request with the user data

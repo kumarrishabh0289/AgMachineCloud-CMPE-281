@@ -65,7 +65,8 @@ router.post('/add', (req, res, next) => {
 				status: 1,
                 sensorId: sensorId,
                 startDate:Date.now(),
-                totalPause:0
+                totalPause:0,
+                email: req.body.email
 			});
 			sensor
 				.save()

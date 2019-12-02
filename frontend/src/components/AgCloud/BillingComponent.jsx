@@ -12,7 +12,8 @@ class BillingComponent extends Component {
 
         this.state = {
             welcomeMessage: 'Hey You Are Authorized',
-            allSensors: []
+            allSensors: [],
+            total: 0
         }
         
     }
@@ -27,10 +28,12 @@ class BillingComponent extends Component {
                 //update the state with the response data
                 console.log("logs data",response.data)
                 this.setState({
-                    allSensors: response.data
+                    allSensors: response.data,
+                    total: response.data.length * 10
                 });
             }).then(
-            console.log("done", this.state.allSensors))
+            console.log("done")
+            )
     }
 
     componentDidMount() {
@@ -45,12 +48,13 @@ class BillingComponent extends Component {
             return (
 
                 <tr>
-                 <td> 10 </td>
+               
                  { topic.serviceRequestName != null  ? (
                 <td>  {   topic.serviceRequestName} Service Request </td>):(
                 <td>{topic.machineType} Machine </td>)}
                 
                 <td> {topic.date} </td>
+                <td> 10 </td>
                 </tr>
             )
         })
@@ -211,7 +215,7 @@ class BillingComponent extends Component {
                               </table>
                       </h6>
                       <h3 class = "aligncenter">
-                                  Due amount: <strong>$170</strong>   </h3>
+        Due amount: <strong>$ { this.state.total}</strong>   </h3>
             
             
                         

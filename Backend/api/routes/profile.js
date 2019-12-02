@@ -42,7 +42,7 @@ router.get('/bill', (req, res, next)=>{
 		.exec()
 		.then(docs => {
 			console.log(docs);
-			res.status(200).json(docs + t);
+			res.status(200).json(t.concat(docs));
 		})
 		.catch(err => {
 			console.log(err);
