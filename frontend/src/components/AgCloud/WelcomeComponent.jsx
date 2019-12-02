@@ -143,14 +143,15 @@ class WelcomeComponent extends Component {
                             <br />
                             <h2>Farmer Dashboard</h2><br />
                             <h4>Welcome, {sessionStorage.name}</h4>
+                       
+                            {/* <Link to="/servicerequest"><button class=" bottomMargin btn btn-success">Manage Service Requests</button></Link> */}
+                  
                             <div class="row">
                             <div class="col-sm-6 col-md-3">
                             <div class="card bg-warning text-white" >
                                     <div class="card-body">
                                         <h4 class="card-title">Edge Stations</h4>
             <p class="card-text">Total <h1>{this.state.countEdgeStation}</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
                                     </div>
                                 </div>
                             </div>
@@ -159,8 +160,7 @@ class WelcomeComponent extends Component {
                                     <div class="card-body">
                                         <h4 class="card-title">Total Machines</h4>
             <p class="card-text">Total <h1>{this.state.countMachine}</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+                                   
                                     </div>
                                 </div>
                             </div>
@@ -169,8 +169,8 @@ class WelcomeComponent extends Component {
                                     <div class="card-body">
                                         <h4 class="card-title">Total Service Request </h4>
             <p class="card-text">Total <h1>{this.state.countService}</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+            <a href="/servicerequest" class=" whiteText  card-link">Manage Service Request</a>
+
                                     </div>
                                 </div>
                             </div>
@@ -179,8 +179,7 @@ class WelcomeComponent extends Component {
                                     <div class="card-body">
                                         <h4 class="card-title">Total Billing</h4>
                                         <p class="card-text">Total <h1>$ { this.state.total} </h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+                                        <a href="/billing" class=" whiteText  card-link">Open Billing</a>
                                     </div>
                                 </div>
                             </div>
@@ -289,7 +288,12 @@ class WelcomeComponent extends Component {
                             <br />
                             <h2>Machine Controller Dashboard</h2><br />
                             <h4>Welcome, {sessionStorage.name}</h4>
-                            
+
+                 
+                            <Link to="/servicerequest"><button class="btn btn-success">Manage Service Requests</button></Link>
+                            <Link to="/billing"><button class="btn btn-success">Billing</button></Link>
+
+
                             <div class="row">
                             <div class="col-sm-6 col-md-3">
                             <div class="card bg-warning text-white" >
