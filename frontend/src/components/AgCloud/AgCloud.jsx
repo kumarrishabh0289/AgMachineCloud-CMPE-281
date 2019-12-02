@@ -6,6 +6,7 @@ import ErrorComponent from './ErrorComponent.jsx'
 import HeaderComponent from './HeaderComponent.jsx'
 
 import MachineAddComponent from './MachineAddComponent.jsx'
+import EdgeStationAddComponent from './EdgeStationAddComponent.jsx'
 import LogoutComponent from './LogoutComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
 import FrontPage from './FrontPage.jsx'
@@ -33,6 +34,7 @@ class AgCloud extends Component {
                             <Route path="/srdashboard" component={SRDashboardComponent}/>
                             <Route path="/edgestation" component={EdgeStation}/>
                             <Route path="/machineadd" component={MachineAddComponent}/>
+                            <Route path="/edgestationadd" component={EdgeStationAddComponent}/>
                             <Route path="/totaledgestation" component={TotalAvailableEdgeStation}/>
                             <Route path="/sensordata" component={SensorData}/>
                             <Route path="/billing" component={BillingComponent}/>
