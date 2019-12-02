@@ -12,7 +12,8 @@ const sensorSchema = mongoose.Schema({
     status:Number,
     startDate:Date,
     startPause:Date,
-    totalPause:Number
+    totalPause:Number,
+    email: String
    });
 
 module.exports = mongoose.model('Sensor', sensorSchema);
