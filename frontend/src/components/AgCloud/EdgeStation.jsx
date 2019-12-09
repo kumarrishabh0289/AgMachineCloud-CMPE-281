@@ -4,7 +4,6 @@ import { API_URL } from '../../Constants'
 import axios from 'axios';
 
 class EdgeStation extends Component {
-
     constructor(props) {
         super(props)
 
@@ -13,8 +12,6 @@ class EdgeStation extends Component {
             machine: [],
         }
         this.ChangeStatus = this.ChangeStatus.bind(this);
-
-
     }
 
     componentDidMount() {
@@ -31,13 +28,10 @@ class EdgeStation extends Component {
                 });
             });
     }
-
     ProgressButton = (machine) => {
         sessionStorage.setItem('machine', machine.machineId);
         this.props.history.push(`/sensor`)
     }
-
-
     ChangeStatus = (machine, p2) => e => {
         console.log("hittt")
         e.preventDefault();
