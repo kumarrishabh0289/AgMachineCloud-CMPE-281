@@ -192,8 +192,7 @@ class BillingComponent extends Component {
 
                   <div class="row">
 
-
-                    <div class="span12 ">
+                    <div class="table-responsive">
 
                       <h6 class="title">
 

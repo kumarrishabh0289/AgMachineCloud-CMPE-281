@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { API_URL } from '../../Constants'
 import axios from 'axios';
-import Draggable from 'react-draggable';
+
 class Sensordata extends Component {
 
     constructor(props) {
@@ -39,7 +39,7 @@ class Sensordata extends Component {
                 <div style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=80)", borderRadius: '10px' }}>
                     <br />
                     <h2>Machine Sensor Data</h2><br />
-                    
+                    <div class="table-responsive">
                     <table className="table">
                                             <tr>
                                                 <th>
@@ -156,6 +156,7 @@ class Sensordata extends Component {
                             })
                         }
                         </table>
+                        </div>
 
 
                     

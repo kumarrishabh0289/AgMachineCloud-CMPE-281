@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { API_URL } from '../../Constants'
 import axios from 'axios';
-import Draggable from 'react-draggable';
+
 class EdgeStation extends Component {
 
     constructor(props) {
@@ -108,7 +108,7 @@ class EdgeStation extends Component {
 
                                     return (
 
-                                        <Draggable>
+                                       
                                             <div>
 
                                                 <div class="card bg-info text-white">
@@ -118,7 +118,8 @@ class EdgeStation extends Component {
                                                     <div class="card-body ">
                                                         <p class="card-text">
                                                         <img src={machine.image}/>
-                                                            <table>
+                                                        <div class="table-responsive">
+                                                            <table class="table">
                                                           
                                                                 <tr>
                                                                     <th>machine ID</th><td>{machine.machineId}</td>
@@ -138,12 +139,13 @@ class EdgeStation extends Component {
                                                                 <tr>
                                                                     <th> Status</th> <td>{machine.machineStatus == 0 ? "Idle" :  "Active" } 
                                                                     &nbsp;
-                                                                    <button class="btn btn-default" type="button" onClick={this.ChangeStatus(machine.machineId, machine.machineStatus)} >Change Status</button> 
+                                                                    {sessionStorage.role === 'Farmer' && (<button class="btn btn-default" type="button" onClick={this.ChangeStatus(machine.machineId, machine.machineStatus)} >Change Status</button> )}
                                                                       </td>
                                                                 </tr>
                                                                                                                              
 
                                                             </table>
+                                                            </div>
 
                                                         </p>
                                                     </div>
@@ -153,7 +155,7 @@ class EdgeStation extends Component {
 
                                                 </div>
                                             </div>
-                                        </Draggable>
+                                        
 
                                     )
                                 })
@@ -163,7 +165,7 @@ class EdgeStation extends Component {
                         </div>
                     </div>
 
-                    <Link to="/machineadd"><button class="btn btn-success">Create new Machine</button></Link>
+                    {sessionStorage.role === 'Farmer' && (<Link to="/machineadd"><button class="btn btn-success">Create new Machine</button></Link>)}
                 </div>
             )
         }
