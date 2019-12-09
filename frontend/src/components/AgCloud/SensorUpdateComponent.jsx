@@ -103,7 +103,6 @@ class SensorUpdateComponent extends Component {
                 <td>{topic.edgeStationId}</td>
                 <td bgColor={color}>{status_text}</td>
                 <td>              
-                      <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClick} >View Data</button> 
                 <button class="btn btn-default" type="button" style={divStyle} onClick={this.onClickDelete(topic.sensorId)} >Delete </button> 
                 </td>
                 </tr>

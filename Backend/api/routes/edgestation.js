@@ -40,9 +40,16 @@ router.get('/email', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+	EdgeStation.findOne().sort({edgeStationId: 'desc', _id: -1}).limit(1)
+		.exec()
+		.then(docs => {
+			console.log(docs);
+			let edgeStationId = 1;
+			if (docs) {
+				edgeStationId = docs.edgeStationId + 1;
+			}
 	const edgeStation = new EdgeStation({
 		_id: new mongoose.Types.ObjectId(),
-		edgeStationId: req.body.edgeStationId,
 		name: req.body.name,
 		latitude: req.body.latitude,
 		longitude: req.body.longitude,
@@ -50,7 +57,8 @@ router.post('/', (req, res) => {
 		city: req.body.city,
 		country: req.body.country,
 		state: req.body.state,
-		userEmail: req.body.userEmail
+		userEmail: req.body.userEmail,
+		edgeStationId:edgeStationId
 	});
 	edgeStation
 		.save()
@@ -61,6 +69,7 @@ router.post('/', (req, res) => {
 	res.status(201).json({
 		message: "New Edge Station Created",
 	});
+})
 });
 
 router.patch("/addMachine", (req, res) => {

@@ -33,9 +33,9 @@ class SensorAddComponent extends Component {
         const data = {
             name: this.state.name,
             sensorType: this.state.sensortype ,
-            machineId: this.state.machineid,
+            machineId: sessionStorage.machine,
             provider: this.state.provider,
-            edgeStationId: this.state.edgestationid,
+            edgeStationId: sessionStorage.edgeStation,
             desc: this.state.dsc,
             email: sessionStorage.authenticatedUser
         }
@@ -109,19 +109,6 @@ class SensorAddComponent extends Component {
                                         </div>
 
                                         </div>
-                                        <div className="row" >
-
-                                            <div className="col-sm-12 col-md-12">
-
-                                                <div className="form-group">
-                                                    <label htmlFor="where"><h6>Machine ID</h6></label>
-                                                    <input type="text" className="form-control" name="machineid" id="machineid" placeholder="Machine ID" value={this.state.machineid} onChange={this.handleChange}/>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
 
                                         <div className="row" >
 
@@ -137,20 +124,6 @@ class SensorAddComponent extends Component {
 
                                         </div>
                                      
-                                        <div className="row" >
-
-                                            <div className="col-sm-12 col-md-12">
-
-                                                <div className="form-group">
-                                                    <label htmlFor="where"><h6> Edge Station Id </h6></label>
-                                                    <input type="text" className="form-control" name="edgestationid" id="edgestationid" placeholder="Enter" value={this.state.edgestationid} onChange={this.handleChange}/>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
                                         <div className="row" >
 
                                             <div className="col-sm-12 col-md-12">

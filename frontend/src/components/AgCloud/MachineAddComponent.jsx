@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import axios from 'axios';
 import { API_URL } from '../../Constants'
+import { Link } from 'react-router-dom'
 
 class MachineAddComponent extends Component {
 
@@ -14,7 +15,6 @@ class MachineAddComponent extends Component {
             welcomeMessage: 'Hey You Are Authorized',
             name:"",
             machineType:"",
-            machineid:"",
             provider:"",
             edgestationid:"",
             dsc: "",
@@ -33,7 +33,6 @@ class MachineAddComponent extends Component {
         const data = {
             name: this.state.name,
             machineType: this.state.machineType ,
-            machineId: this.state.machineid,
             provider: this.state.provider,
             edgeStationId: sessionStorage.edgeStation,
             desc: this.state.dsc,
@@ -111,19 +110,6 @@ class MachineAddComponent extends Component {
                                         </div>
 
                                         </div>
-                                        <div className="row" >
-
-                                            <div className="col-sm-12 col-md-12">
-
-                                                <div className="form-group">
-                                                    <label htmlFor="where"><h6>Machine ID</h6></label>
-                                                    <input type="text" className="form-control" name="machineid" id="machineid" placeholder="Machine ID" value={this.state.machineid} onChange={this.handleChange}/>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
 
                                         <div className="row" >
 
@@ -171,7 +157,7 @@ class MachineAddComponent extends Component {
 
                                             <br />
                                             {this.state.hasFailed && <div className="alert alert-warning">Machine addition Failed</div>}
-                                            {this.state.showSuccessMessage && <div className="alert alert-warning">Machine Added Successfully</div>}
+                                            {this.state.showSuccessMessage && <div className="alert alert-warning">Machine Added Successfully&nbsp;&nbsp;<Link to="/edgestation"><button class="btn btn-success">Go to Edge Station</button></Link></div>}
                                             <br />
 
                                             </div>
