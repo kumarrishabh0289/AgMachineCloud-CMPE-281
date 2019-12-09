@@ -96,7 +96,7 @@ class ManageSRComponent extends Component {
                         <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
 
                 <h3>Manage service request</h3>
-                <div className="container">
+                <div class="table-responsive">
                 <table class="table">
                             <thead>
                             <tr>

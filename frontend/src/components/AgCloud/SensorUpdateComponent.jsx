@@ -114,7 +114,7 @@ class SensorUpdateComponent extends Component {
                   <div className="container">
 
               
-                <div className="container">
+<div class="table-responsive">
                 <table class="table">
                             <thead>
                             <tr>

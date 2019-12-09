@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { API_URL } from '../../Constants'
 import axios from 'axios';
-import Draggable from 'react-draggable';
+
 class TotalAvailableEdgeStation extends Component {
 
     constructor(props) {
@@ -60,7 +60,7 @@ class TotalAvailableEdgeStation extends Component {
 
                                     return (
 
-                                        <Draggable>
+                                       
                                             <div>
 
                                                 <div class="card bg-info text-white">
@@ -70,8 +70,8 @@ class TotalAvailableEdgeStation extends Component {
                                                     <div class="card-body ">
                                                         <p class="card-text">
                                                         <iframe src={"https://maps.google.com/maps?q="+edgestation.latitude+","+edgestation.longitude+"&z=15&output=embed"} width="300" height="270" frameborder="0" style={{border:0}}></iframe>
-                      
-                                                            <table>
+                                                        <div class="table-responsive">
+                                                            <table class="table">
                                                                 <tr>
                                                                     <th>EdgeStation ID</th><td>{edgestation.edgeStationId}</td>
                                                                 </tr>
@@ -99,6 +99,7 @@ class TotalAvailableEdgeStation extends Component {
                                                                
 
                                                             </table>
+                                                            </div>
 
                                                         </p>
                                                     </div>
@@ -108,7 +109,7 @@ class TotalAvailableEdgeStation extends Component {
 
                                                 </div>
                                             </div>
-                                        </Draggable>
+                                        
 
                                     )
                                 })
@@ -137,7 +138,7 @@ class TotalAvailableEdgeStation extends Component {
 
                                     return (
 
-                                        <Draggable>
+                                       
                                             <div>
 
                                                 <div class="card bg-info text-white">
@@ -147,8 +148,8 @@ class TotalAvailableEdgeStation extends Component {
                                                     <div class="card-body ">
                                                         <p class="card-text">
                                                         <iframe src={"https://maps.google.com/maps?q="+edgestation.latitude+","+edgestation.longitude+"&z=15&output=embed"} width="300" height="270" frameborder="0" style={{border:0}}></iframe>
-                      
-                                                            <table>
+                                                        <div class="table-responsive">
+                                                            <table class="table">
                                                                 <tr>
                                                                     <th>EdgeStation ID</th><td>{edgestation.edgeStationId}</td>
                                                                 </tr>
@@ -176,6 +177,7 @@ class TotalAvailableEdgeStation extends Component {
                                                                
 
                                                             </table>
+                                                            </div>
 
                                                         </p>
                                                     </div>
@@ -185,7 +187,7 @@ class TotalAvailableEdgeStation extends Component {
 
                                                 </div>
                                             </div>
-                                        </Draggable>
+                                        
 
                                     )
                                 })
@@ -194,8 +196,6 @@ class TotalAvailableEdgeStation extends Component {
 
                         </div>
                     </div>
-
-                    <Link to="/edgestationcreate"><button class="btn btn-success">Create new Edge Station</button></Link>
                 </div>
             )
         }
