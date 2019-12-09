@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { API_URL } from '../../Constants'
 import axios from 'axios';
-import Draggable from 'react-draggable';
+
 import { Chart } from "react-google-charts";
 class WelcomeComponent extends Component {
 
@@ -213,7 +213,7 @@ class WelcomeComponent extends Component {
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-sm-12 col-md-12">
+                                <div class="table-responsive">
                                     <table className="table">
                                         <tr>
                                             <th>
@@ -289,45 +289,6 @@ class WelcomeComponent extends Component {
                             <h2>Machine Controller Dashboard</h2><br />
                             <h4>Welcome, {sessionStorage.name}</h4>
 
-                 
-                            <Link to="/servicerequest"><button class="btn btn-success">Manage Service Requests</button></Link>
-                            <Link to="/billing"><button class="btn btn-success">Billing</button></Link>
-
-
-                            <div class="row">
-                            <div class="col-sm-6 col-md-3">
-                            <div class="card bg-warning text-white" >
-                                    <div class="card-body">
-                                        <h4 class="card-title">Edge Stations</h4>
-                                        <p class="card-text">Total <h1>{this.state.countEdgeStation}</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                            <div class="card bg-danger text-white" >
-                                    <div class="card-body">
-                                        <h4 class="card-title">Total Machines</h4>
-                                        <p class="card-text">Total <h1>{this.state.countMachine}</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                            <div class="card bg-success text-white" >
-                                    <div class="card-body">
-                                        <h4 class="card-title">Total Service Request </h4>
-                                        <p class="card-text">Total <h1>{this.state.countService}</h1></p>
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                            </div>
                             <div class="row">
                                 <div class="col-sm-6 col-md-6">
                                     <Chart
@@ -356,6 +317,7 @@ class WelcomeComponent extends Component {
                             <br />
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
+                                <div class="table-responsive">
                                     <table className="table">
                                         <tr>
                                             <th>
@@ -406,6 +368,7 @@ class WelcomeComponent extends Component {
                                         }
 
                                     </table>
+                                    </div>
                                 </div>
 
                             </div>
