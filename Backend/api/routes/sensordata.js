@@ -73,5 +73,23 @@ router.post('/add', (req, res, next) => {
 			});
 		})
 
+/*
+
+
+{"machineId":2,
+"name":"Temperature Sensor 4",
+"sensorType":"Temperature",
+"desc":"Temp",
+"edgeStationId":9511301,
+"provider":"CAT",
+"status":1,
+"sensorId":1,
+"startDate":"2019-11-18T01:19:35.410+00:00",
+"totalPause":95,
+"data":"98 degree celcius"
+}
+
+*/
+
 
 module.exports = router;

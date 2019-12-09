@@ -39,7 +39,7 @@ class Sensordata extends Component {
                 <div style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=80)", borderRadius: '10px' }}>
                     <br />
                     <h2>Machine Sensor Data</h2><br />
-                    <div class="table-responsive">
+                    <div class="table-responsive"> 
                     <table className="table">
                                             <tr>
                                                 <th>
@@ -98,7 +98,19 @@ class Sensordata extends Component {
                                                 {sensordata.provider}
                                                 </td>
                                                 <td>
-                                                {sensordata.status}
+                                        
+                                                {sensordata.status == 1 ?( <p> "First Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 2 ?( <p> "Second Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 3 ?( <p> "Third Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 4 ?( <p> "Fourth Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
                                                 </td>
                                                 <td>
                                                 {sensordata.sensorId}
@@ -137,7 +149,18 @@ class Sensordata extends Component {
                                                 {sensordata.provider}
                                                 </td>
                                                 <td>
-                                                {sensordata.status}
+                                                {sensordata.status == 1 ?( <p> "First Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 2 ?( <p> "Second Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 3 ?( <p> "Third Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 4 ?( <p> "Fourth Code" </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
                                                 </td>
                                                 <td>
                                                 {sensordata.sensorId}
