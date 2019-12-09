@@ -155,6 +155,30 @@ router.patch("/update", (req, res) => {
 	
 });
 
+router.patch("/updatenew", (req, res) => {
+    const sensorId = req.body.sensorId;
+
+        Sensor.updateOne({sensorId: sensorId}, {
+			$set: {
+				status: req.body.status,
+			}
+		})
+		.exec()
+		.then(result => {
+			console.log(result);
+			res.status(200).json({
+				message: "Sensor status was updated Successfully"
+			});
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({
+				error: err
+			});
+		});
+	
+});
+
 router.put("/delete", (req, res, next) => {
 
     Sensor.remove({ sensorId:req.body.sensorId })

@@ -35,7 +35,7 @@ class SensorAddComponent extends Component {
             sensorType: this.state.sensortype ,
             machineId: sessionStorage.machine,
             provider: this.state.provider,
-            edgeStationId: sessionStorage.edgestation,
+            edgeStationId: sessionStorage.edgeStation,
             desc: this.state.dsc,
             email: sessionStorage.authenticatedUser
         }
