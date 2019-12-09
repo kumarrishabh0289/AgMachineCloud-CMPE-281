@@ -14,7 +14,6 @@ class EdgeStationAddComponent extends Component {
         this.state = {
             welcomeMessage: 'Hey You Are Authorized',
             name: "",
-            edgeStationId: "",
             latitude: "",
             longitude: "",
             address: "",
@@ -35,7 +34,6 @@ class EdgeStationAddComponent extends Component {
         e.preventDefault();
         const data = {
             name: this.state.name,
-            edgeStationId: this.state.edgeStationId,
             latitude: this.state.latitude,
             longitude: this.state.longitude,
             city: this.state.city,
@@ -90,19 +88,7 @@ class EdgeStationAddComponent extends Component {
                                 </h4>
 
                         <form onSubmit={this.submitSignUp}>
-                            <div className="row" >
-
-                                <div className="col-sm-12 col-md-12">
-
-                                    <div className="form-group">
-                                        <label htmlFor="where"><h6>Edge Station Id</h6></label>
-                                        <input type="text" className="form-control" name="edgeStationId" id="edgeStationId" placeholder="Edge Station Id" value={this.state.edgeStationId} onChange={this.handleChange} />
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            
                             <div className="row" >
 
                                 <div className="col-sm-12 col-md-12">
