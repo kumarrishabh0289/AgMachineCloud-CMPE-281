@@ -6,6 +6,7 @@ const ServiceRequest = require('../models/servicerequest');
 const User = require('../models/user');
 var multer = require('multer');
 const path = require("path");
+const Sensor = require('../models/sensor');
 
 const Machine = require('../models/machine');
 router.get('/', (req, res, next) => {
@@ -27,6 +28,7 @@ router.get('/', (req, res, next) => {
 router.get('/bill', (req, res, next)=>{
     const email = req.query.email;
     var t
+    var t2
 	ServiceRequest.find({email: email})
 		.exec()
 		.then(doc => {
@@ -42,8 +44,23 @@ router.get('/bill', (req, res, next)=>{
 		.exec()
 		.then(docs => {
 			console.log(docs);
-			res.status(200).json(t.concat(docs));
-		})
+			t2 = t.concat(docs);
+        })
+        .then(
+            Sensor.find({email: email})
+            .exec()
+            .then(docs => {
+                console.log(docs);
+                res.status(200).json(t2.concat(docs));
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    error: err
+                })
+            })
+
+        )
 		.catch(err => {
 			console.log(err);
 			res.status(500).json({
