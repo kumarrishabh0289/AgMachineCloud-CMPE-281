@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 //use cors to allow cross origin resource sharing
 //app.use(cors({ origin: 'http://ec2-18-217-254-66.us-east-2.compute.amazonaws.com:3000', credentials: true }));
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://ag-machine.cloud', credentials: true }));
 
 console.log(__dirname)
 var publicDir = require('path').join(__dirname,'/public');

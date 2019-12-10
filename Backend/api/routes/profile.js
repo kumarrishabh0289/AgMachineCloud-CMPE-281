@@ -35,44 +35,41 @@ router.get('/bill', (req, res, next)=>{
 			console.log("From database", doc);
 			if (doc) {
                 t = doc
+                Machine.find({email: email})
+                .exec()
+                .then(docs => {
+                    console.log(docs);
+                    t2 = t.concat(docs);
+                    Sensor.find({email: email})
+                    .exec()
+                    .then(docs => {
+                        console.log(docs);
+                        res.status(200).json(t2.concat(docs));
+                    }).catch(err => {
+                        console.log(err);
+                        res.status(500).json({
+                            error: err
+                        })
+                    })
+
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    })
+                })
 			} else {
 				res.status(404).json({message: "not a valid machineId"});
 			}
-        })
-        .then(
-			Machine.find({email: email})
-		.exec()
-		.then(docs => {
-			console.log(docs);
-			t2 = t.concat(docs);
-        })
-        .then(
-            Sensor.find({email: email})
-            .exec()
-            .then(docs => {
-                console.log(docs);
-                res.status(200).json(t2.concat(docs));
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
             })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    error: err
-                })
-            })
-
-        )
-		.catch(err => {
-			console.log(err);
-			res.status(500).json({
-				error: err
-			})
-		})
-		)
-		.catch(err => {
-			console.log(err);
-			res.status(500).json({error: err});
-		})
+        })
         
+      
 });
 
 
