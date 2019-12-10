@@ -249,7 +249,7 @@ class WelcomeComponent extends Component {
                                                     status_text = "Connected"
                                                     color = "blue"
                                                 }
-                                                else if (sensors.status == 4) {
+                                                else if (sensor.status == 4) {
                                                     status_text = "Maintenance"
                                                     color = "grey"
                                                 }
@@ -361,7 +361,7 @@ class WelcomeComponent extends Component {
                                                     status_text = "Connected"
                                                     color = "blue"
                                                 }
-                                                else if (sensors.status == 4) {
+                                                else if (sensor.status == 4) {
                                                     status_text = "Maintenance"
                                                     color = "grey"
                                                 }
