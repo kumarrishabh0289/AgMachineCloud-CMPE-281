@@ -13,8 +13,6 @@ class TotalAvailableEdgeStation extends Component {
             edgestation: [],
             edgestations:[]
         }
-
-
     }
 
     componentDidMount() {
