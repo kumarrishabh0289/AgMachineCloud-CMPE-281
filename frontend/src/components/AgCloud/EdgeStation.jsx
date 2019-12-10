@@ -30,6 +30,7 @@ class EdgeStation extends Component {
     }
     ProgressButton = (machine) => {
         sessionStorage.setItem('machine', machine.machineId);
+        sessionStorage.setItem('machineowner', machine.email);
         this.props.history.push(`/sensor`)
     }
     ChangeStatus = (machine, p2) => e => {
