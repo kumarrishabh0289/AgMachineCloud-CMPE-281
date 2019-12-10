@@ -39,7 +39,7 @@ class Sensordata extends Component {
                 <div style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=80)", borderRadius: '10px' }}>
                     <br />
                     <h2>Machine Sensor Data</h2><br />
-                    <div class="table-responsive">
+                    <div class="table-responsive"> 
                     <table className="table">
                                             <tr>
                                                 <th>
@@ -98,7 +98,22 @@ class Sensordata extends Component {
                                                 {sensordata.provider}
                                                 </td>
                                                 <td>
-                                                {sensordata.status}
+                                        
+                                                {sensordata.status == 1 ?( <p> Active </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 2 ?( <p> Paused </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 3 ?( <p> Connected </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 4 ?( <p> Maintainence </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                 {sensordata.status == 0 ?( <p> Disabled </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
                                                 </td>
                                                 <td>
                                                 {sensordata.sensorId}
@@ -137,7 +152,21 @@ class Sensordata extends Component {
                                                 {sensordata.provider}
                                                 </td>
                                                 <td>
-                                                {sensordata.status}
+                                                {sensordata.status == 1 ?( <p> Active </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 2 ?( <p> Paused </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 3 ?( <p> Connected </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                {sensordata.status == 4 ?( <p> Maintainence </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                 {sensordata.status == 0 ?( <p> Disabled </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
                                                 </td>
                                                 <td>
                                                 {sensordata.sensorId}
