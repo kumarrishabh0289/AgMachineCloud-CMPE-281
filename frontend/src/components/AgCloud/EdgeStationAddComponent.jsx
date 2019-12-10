@@ -95,7 +95,7 @@ class EdgeStationAddComponent extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="where"><h6>Edge Station Name</h6></label>
-                                        <input type="text" className="form-control" name="name" id="name" placeholder="Edge Station Name" value={this.state.name} onChange={this.handleChange} />
+                                        <input type="text" className="form-control" name="name" id="name" placeholder="Edge Station Name" required value={this.state.name} onChange={this.handleChange} />
 
                                     </div>
 
@@ -108,7 +108,7 @@ class EdgeStationAddComponent extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="where"><h6>Latitude</h6></label>
-                                        <input type="text" className="form-control" name="latitude" id="latitude" placeholder="Latitude" value={this.state.latitude} onChange={this.handleChange} />
+                                        <input type="text" className="form-control" name="latitude" id="latitude" placeholder="Latitude" required value={this.state.latitude} onChange={this.handleChange} />
 
                                     </div>
 
@@ -122,7 +122,7 @@ class EdgeStationAddComponent extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="where"><h6>Longitude</h6></label>
-                                        <input type="text" className="form-control" name="longitude" id="longitude" placeholder="Longitude" value={this.state.longitude} onChange={this.handleChange} />
+                                        <input type="text" className="form-control" name="longitude" id="longitude" placeholder="Longitude" required value={this.state.longitude} onChange={this.handleChange} />
 
                                     </div>
 
@@ -136,7 +136,7 @@ class EdgeStationAddComponent extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="where"><h6>Address</h6></label>
-                                        <input type="text" className="form-control" name="address" id="address" placeholder="Address" value={this.state.address} onChange={this.handleChange} />
+                                        <input type="text" className="form-control" name="address" id="address" placeholder="Address" required value={this.state.address} onChange={this.handleChange} />
 
                                     </div>
 
@@ -154,7 +154,7 @@ class EdgeStationAddComponent extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="where"><h6> City </h6></label>
-                                        <input type="text" className="form-control" name="city" id="city" placeholder="City" value={this.state.city} onChange={this.handleChange} />
+                                        <input type="text" className="form-control" name="city" id="city" placeholder="City"  required value={this.state.city} onChange={this.handleChange} />
 
                                     </div>
 
@@ -168,7 +168,7 @@ class EdgeStationAddComponent extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="where"><h6>State</h6></label>
-                                        <input type="text" className="form-control" name="state" id="state" placeholder="State" value={this.state.state} onChange={this.handleChange} />
+                                        <input type="text" className="form-control" name="state" id="state" placeholder="State"  required value={this.state.state} onChange={this.handleChange} />
 
                                     </div>
 
@@ -181,7 +181,7 @@ class EdgeStationAddComponent extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="where"><h6>Country</h6></label>
-                                        <input type="text" className="form-control" name="country" id="country" placeholder="Country" value={this.state.country} onChange={this.handleChange} />
+                                        <input type="text" className="form-control" name="country" id="country" placeholder="Country" required value={this.state.country} onChange={this.handleChange} />
 
                                     </div>
 

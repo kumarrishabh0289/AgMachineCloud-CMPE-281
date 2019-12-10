@@ -89,6 +89,14 @@ class SensorUpdateComponent extends Component {
                 status_text = "Paused"
                 color = "yellow"
             }
+            else if (topic.status == 3) {
+                status_text = "Connected"
+                color = "blue"
+            }
+            else if (topic.status == 4) {
+                status_text = "Maintenance"
+                color = "grey"
+            }
             else{
                 status_text = "Disabled"
                 color ="red"

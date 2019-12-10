@@ -89,7 +89,7 @@ class SensorAddComponent extends Component {
                                     
                                         <div className="form-group">
                                             <label htmlFor="where"><h6>Sensor Type</h6></label>
-                                            <input type="text" className="form-control" name="sensortype" id="sensortype" placeholder="Sensor Type" value={this.state.sensortype} onChange={this.handleChange}/>
+                                            <input type="text" className="form-control" name="sensortype" id="sensortype" placeholder="Sensor Type" required value={this.state.sensortype} onChange={this.handleChange}/>
 
                                         </div>
 
@@ -102,7 +102,7 @@ class SensorAddComponent extends Component {
 
                                             <div className="form-group">
                                                 <label htmlFor="where"><h6>Sensor Name</h6></label>
-                                                <input type="text" className="form-control" name="name" id="name" placeholder="Sensor Name" value={this.state.name} onChange={this.handleChange}/>
+                                                <input type="text" className="form-control" name="name" id="name" placeholder="Sensor Name" required value={this.state.name} onChange={this.handleChange}/>
 
                                             </div>
 
@@ -116,7 +116,7 @@ class SensorAddComponent extends Component {
 
                                                 <div className="form-group">
                                                     <label htmlFor="where"><h6>Provider</h6></label>
-                                                    <input type="text" className="form-control" name="provider" id="provider" placeholder="Provider" value={this.state.provider} onChange={this.handleChange}/>
+                                                    <input type="text" className="form-control" name="provider" id="provider" placeholder="Provider" required value={this.state.provider} onChange={this.handleChange}/>
 
                                                 </div>
 
@@ -130,7 +130,7 @@ class SensorAddComponent extends Component {
 
                                                 <div className="form-group">
                                                     <label htmlFor="where"><h6> Description </h6></label>
-                                                    <input type="text" className="form-control" name="dsc" id="dsc" placeholder="Enter" value={this.state.dsc} onChange={this.handleChange}/>
+                                                    <input type="text" className="form-control" name="dsc" id="dsc" placeholder="Enter" required value={this.state.dsc} onChange={this.handleChange}/>
 
                                                 </div>
 
