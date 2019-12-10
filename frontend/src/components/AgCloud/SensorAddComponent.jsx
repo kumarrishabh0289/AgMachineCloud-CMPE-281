@@ -37,7 +37,7 @@ class SensorAddComponent extends Component {
             provider: this.state.provider,
             edgeStationId: sessionStorage.edgeStation,
             desc: this.state.dsc,
-            email: sessionStorage.authenticatedUser
+            email: sessionStorage.machineowner
         }
         console.log("data is",data)  
 
