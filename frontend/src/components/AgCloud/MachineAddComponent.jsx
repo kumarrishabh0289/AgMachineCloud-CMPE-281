@@ -90,7 +90,7 @@ class MachineAddComponent extends Component {
                                     
                                         <div className="form-group">
                                             <label htmlFor="where"><h6>Machine Type</h6></label>
-                                            <input type="text" className="form-control" name="machineType" id="machineType" placeholder="Type Drone or tractor" value={this.state.machineType} onChange={this.handleChange}/>
+                                            <input type="text" className="form-control" name="machineType" id="machineType" placeholder="Type Drone or tractor" required value={this.state.machineType} onChange={this.handleChange}/>
 
                                         </div>
 
@@ -103,7 +103,7 @@ class MachineAddComponent extends Component {
 
                                             <div className="form-group">
                                                 <label htmlFor="where"><h6>Machine Name</h6></label>
-                                                <input type="text" className="form-control" name="name" id="name" placeholder="Sensor Name" value={this.state.name} onChange={this.handleChange}/>
+                                                <input type="text" className="form-control" name="name" id="name" placeholder="Machine Name" required value={this.state.name} onChange={this.handleChange}/>
 
                                             </div>
 
@@ -117,7 +117,7 @@ class MachineAddComponent extends Component {
 
                                                 <div className="form-group">
                                                     <label htmlFor="where"><h6>Provider</h6></label>
-                                                    <input type="text" className="form-control" name="provider" id="provider" placeholder="Provider" value={this.state.provider} onChange={this.handleChange}/>
+                                                    <input type="text" className="form-control" name="provider" id="provider" placeholder="Provider"  required value={this.state.provider} onChange={this.handleChange}/>
 
                                                 </div>
 
@@ -133,7 +133,7 @@ class MachineAddComponent extends Component {
 
                                                 <div className="form-group">
                                                     <label htmlFor="where"><h6> Description </h6></label>
-                                                    <input type="text" className="form-control" name="dsc" id="dsc" placeholder="Enter" value={this.state.dsc} onChange={this.handleChange}/>
+                                                    <input type="text" className="form-control" name="dsc" id="dsc" placeholder="Enter" required value={this.state.dsc} onChange={this.handleChange}/>
 
                                                 </div>
 
