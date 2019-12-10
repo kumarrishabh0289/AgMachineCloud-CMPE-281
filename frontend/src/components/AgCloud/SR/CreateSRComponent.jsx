@@ -18,6 +18,11 @@ class CreateSRComponent extends Component {
         
         this.submitSignUp = this.submitSignUp.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        console.log("logging info")
+
+        console.log(sessionStorage.machineowner)
+        console.log(sessionStorage.machine)
+
     }
     
     handleChange = (event) => {
@@ -27,15 +32,22 @@ class CreateSRComponent extends Component {
     }
      
     submitSignUp = (e) => {
-        
-        
+        var eemail = sessionStorage.authenticatedUser
+
+        if ( sessionStorage.role === 'ServiceCarrierStaff')
+        {
+            eemail = sessionStorage.machineowner
+        }
+
         e.preventDefault();
         const data = {
             machineId: sessionStorage.machine,
             serviceRequestName: this.state.sr,
-            email: sessionStorage.authenticatedUser
+            email: eemail
         }
         
+        console.log("creating sr", eemail, sessionStorage.machine)
+
         axios.defaults.withCredentials = true;
         //make a post request with the user data
         axios.post(API_URL + '/servicerequest/add', data)

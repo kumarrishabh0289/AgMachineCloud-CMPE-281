@@ -169,7 +169,6 @@ class WelcomeComponent extends Component {
                                     <div class="card-body">
                                         <h4 class="card-title">Total Service Request </h4>
             <p class="card-text">Total <h1>{this.state.countService}</h1></p>
-            <a href="/servicerequest" class=" whiteText  card-link">Manage Service Request</a>
 
                                     </div>
                                 </div>

@@ -61,7 +61,7 @@ class LoginComponent extends Component {
                     this.props.history.push(`/welcome/${response.data.name}`)
                 }
                 else{
-                   this.props.history.push(`\srdashboard`)
+                   this.props.history.push(`\TotalMachine`)
                 }
             }).catch(() => {
                 this.setState({ showSuccessMessage: false })

@@ -17,6 +17,7 @@ import TotalAvailableEdgeStation from './TotalAvailableEdgeStation'
 import SensorData from './SensorData'
 import BillingComponent from './BillingComponent'
 import SMDashboardComponent from './SR/SMDashboardComponent.jsx'
+import TotalMachine from './TotalMachine'
 
 
 class AgCloud extends Component {
@@ -32,6 +33,9 @@ class AgCloud extends Component {
                             <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
                             <AuthenticatedRoute path="/sensor" component={SensorComponent}/>
                             <Route path="/srdashboard" component={SRDashboardComponent}/>
+                            
+                            <Route path="/TotalMachine" component={TotalMachine}/>
+
                             <Route path="/edgestation" component={EdgeStation}/>
                             <Route path="/machineadd" component={MachineAddComponent}/>
                             <Route path="/edgestationadd" component={EdgeStationAddComponent}/>

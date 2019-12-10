@@ -50,8 +50,25 @@ class BillingComponent extends Component {
         <tr>
 
           {topic.serviceRequestName != null ? (
-            <td>  {topic.serviceRequestName} Service Request </td>) : (
-              <td>{topic.machineType} Machine </td>)}
+            <td>  {topic.serviceRequestName} Service Request </td>) :
+             (
+
+               <p> 
+
+                {topic.machineType != null ? (
+            <td>  {topic.machineType} Machine </td>) :
+             (
+
+              
+              <td>{topic.sensorType} Sensor </td>
+              
+              
+              
+              )}
+
+               </p>         
+              
+              )}
 
           <td> {topic.date} </td>
           <td> 10 </td>
