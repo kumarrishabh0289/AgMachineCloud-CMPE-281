@@ -245,6 +245,14 @@ class WelcomeComponent extends Component {
                                                     status_text = "Paused"
                                                     color = "yellow"
                                                 }
+                                                else if (sensor.status == 3) {
+                                                    status_text = "Connected"
+                                                    color = "blue"
+                                                }
+                                                else if (sensor.status == 4) {
+                                                    status_text = "Maintenance"
+                                                    color = "grey"
+                                                }
                                                 else {
                                                     status_text = "Disabled"
                                                     color = "red"
