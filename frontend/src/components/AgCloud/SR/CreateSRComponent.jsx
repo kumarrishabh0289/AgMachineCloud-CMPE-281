@@ -31,7 +31,7 @@ class CreateSRComponent extends Component {
         
         e.preventDefault();
         const data = {
-            machineId: this.state.md,
+            machineId: sessionStorage.machine,
             serviceRequestName: this.state.sr,
             email: sessionStorage.authenticatedUser
         }
@@ -60,7 +60,7 @@ class CreateSRComponent extends Component {
                 }
             });
 
-        console.log("hihihhi", data)
+        console.log("the data:", data)
     }
     
    
@@ -69,30 +69,18 @@ class CreateSRComponent extends Component {
                   <div className="container">
                         <div  style={{ backgroundColor: "white", opacity: .9, filter: "Alpha(opacity=50)", borderRadius: '10px' }}>
 
-                <h4>Create a new Service Request </h4>
+                <h4>Create a new Service Request for Machine ID : {sessionStorage.machine} </h4>
                 <div className="container">
 
                 <form onSubmit={this.submitSignUp}>
-                <div className="row" >
-
-                        <div className="col-sm-12 col-md-12">
-
-                            <div className="form-group">
-                                <label htmlFor="where"><h6>Machine Details</h6></label>
-                                <input type="text" className="form-control" name="md" id="md" placeholder="Machine Details" value={this.state.md} onChange={this.handleChange}/>
-
-                            </div>
-
-                        </div>
-
-                        </div>
+     
                         <div className="row" >
 
                         <div className="col-sm-12 col-md-12">
 
                             <div className="form-group">
                                 <label htmlFor="where"><h6>Service Request</h6></label>
-                                <input type="text" className="form-control" name="sr" id="sr" placeholder="Service Request" value={this.state.sr} onChange={this.handleChange}/>
+                                <input type="text" required="required" className="form-control" name="sr" id="sr" placeholder="Service Request" value={this.state.sr} onChange={this.handleChange}/>
 
                             </div>
 

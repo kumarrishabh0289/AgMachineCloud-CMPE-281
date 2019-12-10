@@ -84,6 +84,13 @@ class EdgeStation extends Component {
         this.props.history.push(`/sensordata`)
     }
 
+    
+    Service = (machine) => {
+        sessionStorage.setItem('machine', machine.machineId);
+
+        this.props.history.push(`/servicerequest`)
+    }
+
     render() {
        
       
@@ -144,8 +151,13 @@ class EdgeStation extends Component {
                                                         </p>
                                                     </div>
                                                     <div class="card-footer">
-                                                    <button onClick={() => this.ProgressButton(machine)} class="btn btn-primary">Goto Machine Dashboard</button><br/> <br/> <button onClick={() => this.Sensor(machine)} class="btn btn-danger">Display Machine's Sensor Data</button>
+                                                    <button onClick={() => this.ProgressButton(machine)} class="btn btn-primary">Sensor Dashboard</button><br/> 
+                                                    <br/> <button onClick={() => this.Sensor(machine)} class="btn btn-danger">Display Machine's Sensor Data</button> <br/> 
+                                                    <br/>  <button onClick={() => this.Service(machine)} class="btn btn-primary">Service Dashboard</button><br/> <br/> 
+
+                                                    
                                                     </div>
+                                               
 
                                                 </div>
                                             </div>
