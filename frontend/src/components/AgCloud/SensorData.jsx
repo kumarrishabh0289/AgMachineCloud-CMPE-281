@@ -99,16 +99,19 @@ class Sensordata extends Component {
                                                 </td>
                                                 <td>
                                         
-                                                {sensordata.status == 1 ?( <p> "First Code" </p> ):                   
+                                                {sensordata.status == 1 ?( <p> Active </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
-                                                {sensordata.status == 2 ?( <p> "Second Code" </p> ):                   
+                                                {sensordata.status == 2 ?( <p> Paused </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
-                                                {sensordata.status == 3 ?( <p> "Third Code" </p> ):                   
+                                                {sensordata.status == 3 ?( <p> Connected </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
-                                                {sensordata.status == 4 ?( <p> "Fourth Code" </p> ):                   
+                                                {sensordata.status == 4 ?( <p> Maintainence </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                 {sensordata.status == 0 ?( <p> Disabled </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
                                                 </td>
@@ -149,16 +152,19 @@ class Sensordata extends Component {
                                                 {sensordata.provider}
                                                 </td>
                                                 <td>
-                                                {sensordata.status == 1 ?( <p> "First Code" </p> ):                   
+                                                {sensordata.status == 1 ?( <p> Active </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
-                                                {sensordata.status == 2 ?( <p> "Second Code" </p> ):                   
+                                                {sensordata.status == 2 ?( <p> Paused </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
-                                                {sensordata.status == 3 ?( <p> "Third Code" </p> ):                   
+                                                {sensordata.status == 3 ?( <p> Connected </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
-                                                {sensordata.status == 4 ?( <p> "Fourth Code" </p> ):                   
+                                                {sensordata.status == 4 ?( <p> Maintainence </p> ):                   
+                                                (<p>  </p> ) 
+                                                }
+                                                 {sensordata.status == 0 ?( <p> Disabled </p> ):                   
                                                 (<p>  </p> ) 
                                                 }
                                                 </td>
