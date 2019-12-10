@@ -23,7 +23,14 @@ class ManageSRComponent extends Component {
     loadSensors() {
         //loads topics to show on left side of home screen
         //axios.get(API_URL + '/servicerequest?machineId=1233')
-        axios.get(API_URL + '/servicerequest/user?email='+sessionStorage.authenticatedUser)
+        var appendemail = sessionStorage.authenticatedUser
+
+        if ( sessionStorage.role === 'ServiceCarrierStaff')
+        {
+            appendemail = sessionStorage.machineowner
+        }
+
+        axios.get(API_URL + '/servicerequest/user?email='+ appendemail)
             .then((response) => {
                 //update the state with the response data
                 console.log(response.data)
